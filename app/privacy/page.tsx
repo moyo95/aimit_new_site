@@ -14,10 +14,10 @@ export default function Privacy() {
     primaryButton={heroData.privacy.primaryButton}
     secondaryButton={heroData.privacy.secondaryButton}
      />
-    <section id="privacy" className="py-20 bg-gray-50">
+    <section id="privacy" className="py-10 md:py-20 bg-gray-50">
       <div className="container mx-auto px-4 my-10 md:my-20">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl font-bold mb-4">個人情報保護ご方針</h2>
+        <div className="text-center mb=10 md:mb-20">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">個人情報保護ご方針</h2>
           
         </div>
         

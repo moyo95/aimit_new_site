@@ -25,16 +25,16 @@ export default function About() {
       primaryButton={heroData.about.primaryButton}
       secondaryButton={heroData.about.secondaryButton}
       />
-    <section id="about" className="py-20">
-      <div className="container mx-auto px-4  my-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+    <section id="about" className="py-10 md:py-20">
+      <div className="container mx-auto px-4 my-10 md:my-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-24 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold mb-6 text-gray-600">私たちについて</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-600">私たちについて</h2>
             <p className="text-gray-600 mb-6 leading-loose">
               1993年の創業以来、地域の皆様の住環境の向上に貢献してきました。
               熟練の技術者たちが、最新の技術と長年の経験を活かし、
@@ -76,7 +76,7 @@ export default function About() {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mt-16 mx-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 mt-16 mx-3 md:mx-12">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -98,7 +98,7 @@ export default function About() {
     </section>
     <section id="about__greeting" className="py-20 bg-slate-100">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-24 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -140,16 +140,16 @@ export default function About() {
                 backgroundPosition: "top",
                 backgroundRepeat: "no-repeat",
               }}
-            /><p className="absolute mt-3">代表取締役社長  佐藤 真仁</p>
+            /><p className="bg-white px-2 rounded-sm absolute bottom-3 left-3 mt-3">代表取締役社長  佐藤 真仁</p>
           </motion.div>
         </div>
 
        
       </div>
     </section>
-    <section id="about__Overview" className="py-20">
-      <div className="container mx-auto px-4  my-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
+    <section id="about__Overview" className="py-10 md:py-20">
+      <div className="container mx-auto px-4 my-10 md:my-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-24">
 
         <motion.div
             initial={{ opacity: 0, x: 50 }}
@@ -262,7 +262,7 @@ export default function About() {
               </tbody>
             </table>
             
-            <div className="grid grid-cols-2 justify-center gap-x-10 gap-y-7 mt-10 border py-9 px-7">
+            <div className="grid grid-cols-2 justify-center gap-3 md:gap-x-10 md:gap-y-7 mt-10 border p-3 md:py-9 md:px-7">
               {Array.from({ length: 4 }).map((_, index) => (
                 <a
                   key={index}

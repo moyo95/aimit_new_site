@@ -142,10 +142,10 @@ export default function Service() {
     primaryButton={heroData.service.primaryButton}
     secondaryButton={heroData.service.secondaryButton}
      />
-    <section id="service" className="py-20 bg-gray-50 min-h-screen flex items-center">
-      <div className="container mx-auto px-4">
+    <section id="service" className="py-10 md:py-20 bg-gray-50 min-h-screen flex items-center">
+      <div className="container mx-auto px-4 my-10 md:my-20">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-10">サービス内容</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-10">サービス内容</h2>
           <p className="text-gray-600 max-w-2xl mx-auto leading-loose">
             プロフェッショナルの技術者が、お客様の快適な暮らしをサポートします。<br />
             住宅設備のことなら、どんなことでもお任せください。
@@ -241,24 +241,29 @@ export default function Service() {
 
       </div>
     </section>
-    <section className="min-h-screen py-20 ">
+    <section className="min-h-screen py-10 px-5 md:py-20 ">
       <div id="fh5co-services">
         <div id="link01" className="container m-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 py-10 justify-items-end">
+          <motion.div 
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-12 py-5 md:py-10 justify-items-end">
             {/* 左側（50%） */}
-            <div className="flex justify-center items-start ">
+            <div className="flex justify-center items-star w-[300px] h-[300px] md:w-[400px] md:h-[400px] overflow-hidden ">
               <Image
-                src="/img/kyutou1.jpg"
-                width={400}
-                height={400}
-                alt="リンナイ"
-                className="object-cover w-full min-h-[400px] rounded-lg"
+                src="/img/kyuto_01.jpg"
+                width={400} /* 幅を固定 */
+                height={400} /* 高さを固定 */
+                alt="給湯器画像"
+                className="rounded-lg"
               />
             </div>
 
             {/* 右側（50%） */}
             <div className="col-span-2 order-2 md:order-1 ml-10">
-              <h2 className="text-3xl font-bold mb-6">01.給湯器の販売・取付工事</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-6">01.給湯器の販売・取付工事</h2>
               <h3 className="text-lg font-semibold mb-4">従来型給湯器＜一戸建・マンション＞</h3>
               <p className="mb-4 leading-loose">
                 ガス給湯器の能力は号数で表示されており、お湯の量は号数によって異なります。
@@ -306,14 +311,18 @@ export default function Service() {
               </div>
 
             </div>
-          </div>
+          </motion.div>
 
-
-          <div id="link02" className="container mx-auto py-10">
+          <motion.div 
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          id="link02" className="container mx-auto py-5 md:py-10">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 py-10 justify-items-end ">
               
               <div className="col-span-2 order-2 md:order-1 ml-10 ">
-                <h2 className="text-3xl font-bold mb-6">02.トイレの販売・取付工事</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">02.トイレの販売・取付工事</h2>
                 <h3 className="text-lg font-semibold mb-4">一体形（便器と温水洗浄便座が一体になっているタイプ）</h3>
                 <ul className="list-disc ml-6 my-6 leading-loose">
                   <li>給湯専用</li>
@@ -337,36 +346,39 @@ export default function Service() {
                 </ul>
               </div>
 
-              <div className="order-1 md:order-2 flex justify-center items-start col-span-1">
+              <div className="order-1 md:order-2 flex justify-center items-start col-span-1  w-[300px] h-[300px] md:w-[400px] md:h-[400px] overflow-hidden  object-contain">
                   <Image
-                        src="/img/toire1.jpg"
+                        src="/img/toire_01.jpg"
                         width={400}
                         height={400}
-                        alt="リンナイ"
-                        className="object-fit w-full min-h-[400px] rounded-lg"
+                        alt="トイレ画像"
+                        className="rounded-lg"
                       />
-                
+
               </div>
             </div>
-          </div>
-
-          
-
-          <div id="link03" className="container m-auto  py-10">
+          </motion.div>
+        
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            id="link03" className="container m-auto  py-5 md:py-10">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 py-10">
               {/* 画像部分 */}
-              <div className="rounded-lg min-h-[400px] flex justify-center items-center ">
+              <div className="flex justify-center items-center w-[300px] h-[300px] md:w-[400px] md:h-[400px] overflow-hidden">
                 <Image
-                  src="/img/food.jpg"
+                  src="/img/renge_01.jpg"
                   width={400}
                   height={400}
-                  alt="リンナイ"
-                  className="object-fit w-full min-h-[400px] rounded-lg "
+                  alt="レンジフード画像"
+                  className=" rounded-lg "
                 />
               </div>
               {/* テキスト部分 */}
               <div className="col-span-2 order-2 md:order-1">
-                <h2 className="text-3xl font-bold mb-6">03.レンジフードの販売・取付工事</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">03.レンジフードの販売・取付工事</h2>
                 <h3 className="text-lg font-semibold mb-4">フードの形状</h3>
                 <ul className="list-disc ml-6 my-6 leading-loose">
                   <li>ブーツ型</li>
@@ -382,54 +394,62 @@ export default function Service() {
                 </ul>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-
-          <div id="link04" className="container m-auto  py-10">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 py-10 justify-items-end ">
-              <div className="col-span-2 order-2 md:order-1 ml-10">
-                <h2 className="text-3xl font-bold mb-6">04.コンロの販売・取付工事</h2>
-                <h3 className="text-lg font-semibold mb-4">従来型給湯器＜一戸建・マンション＞</h3>
-               
-                <p></p>
-                <ul className="list-disc ml-6 my-6 leading-loose">
-                  <li>ビルトインコンロ</li>
-                  <li>テーブルコンロ</li>
-                  
-                </ul>
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            id="link04" className="container m-auto  py-5 md:py-10">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 py-10 justify-items-end ">
+                <div className="col-span-2 order-2 md:order-1 ml-10">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6">04.コンロの販売・取付工事</h2>
+                  <h3 className="text-lg font-semibold mb-4">従来型給湯器＜一戸建・マンション＞</h3>
+                
+                  <p></p>
+                  <ul className="list-disc ml-6 my-6 leading-loose">
+                    <li>ビルトインコンロ</li>
+                    <li>テーブルコンロ</li>
+                    
+                  </ul>
+                </div>
+                <div className="order-1 md:order-2 flex justify-center items-center col-span-1 w-[300px] h-[300px] md:w-[400px] md:h-[400px] overflow-hidden">
+                  <div className="fh5co-icon">
+                    <Image
+                          src="/img/conro_01.jpg"
+                          width={450}
+                          height={450}
+                          alt="コンロ画像"
+                          className="rounded-lg"
+                        />
+                    </div>
+                </div>
               </div>
-              <div className="order-1 md:order-2 flex justify-center items-center col-span-1">
-                <div className="fh5co-icon">
-                  <Image
-                        src="/img/conro.jpg"
-                        width={450}
-                        height={450}
-                        alt="リンナイ"
-                        className="object-fit w-auto min-h-[400px] rounded-lg"
-                      />
-                  </div>
-              </div>
-            </div>
-          </div>
+          </motion.div>
 
-
-          <div id="link05" className="container m-auto  py-10">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            id="link05" className="container m-auto  py-5 md:py-10">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 py-10 ">
                 {/* 画像部分 */}
-              <div className="rounded-lg border border-gray-300 min-h-[400px] flex justify-center items-center">
+              <div className="rounded-lg border border-gray-300 flex justify-center items-center w-[300px] h-[300px] md:w-[400px] md:h-[400px] overflow-hidden">
                 <div className="fh5co-icon">
                   <Image
-                  src="/img/toria.png"
+                  src="/img/maiker_01.jpg"
                   width={400}
                   height={400}
-                  alt="リンナイ"
-                  className="object-cover w-full min-h-auto rounded-lg"
+                  alt="メーカーイメージ画像"
+                  className=" rounded-lg"
                         />
                 </div>
               </div>
                {/* テキスト部分 */}
               <div className="col-span-2 order-2 md:order-1 ">
-              <h2 className="text-3xl font-bold mb-6">05.取り扱いメーカー</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-6">05.取り扱いメーカー</h2>
               <h3 className="text-lg font-semibold mb-4">定番の人気メーカーの製品を取り揃えています。</h3>
                 
                 <p></p>
@@ -482,15 +502,17 @@ export default function Service() {
             </div>
               </div>
             </div> 
-          </div>
+          </motion.div>
 
-          
-        
-
-          <div id="link06" className="container m-auto  py-10">
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }} 
+            id="link06" className="container m-auto  py-5 md:py-10">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 py-10 justify-items-end ">
               <div className="col-span-2 order-2 md:order-1 ml-10">
-                <h2 className="text-3xl font-bold mb-6">06.トラブル対応・修理</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">06.トラブル対応・修理</h2>
                 <h3 className="text-lg font-semibold mb-4">
                   給湯器のトラブルを中心にお客様のお困りごとに<br />誠心誠意、取り組んでいます。</h3>
                
@@ -504,19 +526,19 @@ export default function Service() {
                   
                 </ul>
               </div>
-              <div className="order-1 md:order-2 flex justify-center items-center col-span-1">
+              <div className="order-1 md:order-2 flex justify-center items-center col-span-1 w-[300px] h-[300px] md:w-[400px] md:h-[400px] overflow-hidden">
                 <div className="fh5co-icon">
                   <Image
                         src="/mente.png"
                         width={400}
                         height={400}
-                        alt="リンナイ"
-                        className="object-fit w-auto min-h-auto rounded-lg"
+                        alt="トラブル対応"
+                        className="rounded-lg"
                       />
                   </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>

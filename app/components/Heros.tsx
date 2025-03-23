@@ -51,8 +51,9 @@ interface HerosProps {
         >
             <h1 className="block md:flex items-center text-4xl md:text-5xl font-bold text-white mb-6 md:leading-tight leading-8">
             {title}
-            <span className="inline-block text-xl md:text-3xl my-0 md:my-auto">{subtitle}</span> 
+            <p className=" text-xl md:text-3xl mt-1 ">{subtitle}</p> 
             </h1>
+            
             <p className="text-sl md:text-xl text-gray-200 mb-8">{description}</p>
             <div className="flex flex-wrap gap-4">
               <a href={primaryButton.link}>

@@ -53,10 +53,10 @@ export default function ProjectGallery() {
       primaryButton={heroData.project.primaryButton}
       secondaryButton={heroData.project.secondaryButton}
       />
-      <section id="services" className="py-20 bg-gray-50  md:min-h-screen flex items-center">
-        <div className="container mx-auto px-4">
+      <section id="services" className="py-10 md:py-20 bg-gray-50  md:min-h-screen flex items-center">
+        <div className="container mx-auto px-4 my-10 md:my-20">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-10">施工事例</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-10">施工事例</h2>
             <h3 className="text-1xl text-gray-600 max-w-2xl mx-auto leading-loose">
               名古屋市内のエリアに中心に施工させて頂いた、ビフォーアフターを掲載しています。
               給湯器から住宅設備のご用命は、アイミット株式会社へお任せ下さい。

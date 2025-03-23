@@ -22,17 +22,17 @@ export default function Contact() {
     primaryButton={heroData.contact.primaryButton}
     secondaryButton={heroData.contact.secondaryButton}
      />
-    <section id="contact" className="py-20 bg-gray-50">
+    <section id="contact" className="py-10 md:py-20 bg-gray-50">
       <div className="container mx-auto px-4 my-10 md:my-20">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl font-bold mb-4">お問い合わせ</h2>
+        <div className="text-center mb-10 md:mb-20">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">お問い合わせ</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             お見積り・ご相談は無料です。お気軽にお問い合わせください。<br />
             専門スタッフが丁寧に対応させていただきます。
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-24">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -50,7 +50,7 @@ export default function Contact() {
             viewport={{ once: true }}
             className="space-y-8 relative"
           >
-            <div className="mb-16 relative">
+            <div className="mb6 md:mb-16 relative">
               <h3 className="text-2xl font-semibold mb-8">お問い合わせ方法</h3>
               <div className="space-y-4 ">
                 <div className="row grid md:grid-cols-2 gap-4">
@@ -96,7 +96,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <Card className="p-6 mt-8 bg-primary text-primary-foreground static md:absolute bottom-0">
+            <Card className="p-6 mt-0 md:mt-8 bg-primary text-primary-foreground static md:absolute bottom-0">
               <h3 className="text-xl font-semibold mb-4">緊急の修理依頼</h3>
               <p className="mb-4">
                 水漏れなどの緊急を要する修理は、お電話にて 9:00~18:00 の間で受け付けております。

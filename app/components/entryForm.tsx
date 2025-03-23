@@ -190,7 +190,7 @@ const ContactForm = () => {
         </button>
       </form>
     </Card>
-    <Card className="p-6 bg-blue-500 text-primary-foreground absolute bottom-0 text-center w-full">
+    <Card className="p-6 bg-blue-500 text-primary-foreground mt-6 static md:absolute bottom-0 text-center w-full">
               <h3 className="text-xl font-semibold mb-4">ご質問・ご相談</h3>
               <p className="mb-4">
                 ご不明な点があれば、お電話にて 9:00~18:00 の間で受け付けております。<br />

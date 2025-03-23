@@ -86,10 +86,10 @@ const Questions = () => {
       primaryButton={heroData.questions.primaryButton}
       secondaryButton={heroData.questions.secondaryButton}
       />
-      <section id="questions" className="py-20 bg-gray-50 min-h-screen flex items-center">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-10">よくある質問</h2>
+      <section id="questions" className="py-10 md:py-20 bg-gray-50 min-h-screen flex items-center">
+        <div className="container mx-auto px-4 my-10 md:my-20">
+          <div className="text-center mb-6 md:mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-10">よくある質問</h2>
             <p className="text-gray-600 max-w-2xl mx-auto leading-loose">
               給湯器・トイレ・バスなどの交換、取付、工事など、全く知識のない方でもご安心してご利用いただけるよう、ご質問にお答えしています。
             </p>
