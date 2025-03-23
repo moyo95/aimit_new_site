@@ -18,6 +18,7 @@ const config: Config = {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+        'custom-shape': '31% 69% 70% 30% / 32% 64% 36% 68%',
       },
       colors: {
         background: 'hsl(var(--background))',
@@ -88,6 +89,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  // plugins: [require('tailwindcss-animate')],
 };
 export default config;

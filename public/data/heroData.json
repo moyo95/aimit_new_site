@@ -1,0 +1,66 @@
+{
+    "service": {
+      "id": "service",
+      "title": "サービス",
+      "subtitle": "-SERVICE-",
+      "description": "プロフェッショナルの技術者が、お客様の快適な暮らしをサポートします。<br />住宅設備のことなら、どんなことでもお任せください。",
+      "backgroundImage": "/phot8.jpg",
+      "primaryButton": { "text": "無料見積もりを依頼", "link": "/contact" },
+      "secondaryButton": { "text": "サービス詳細", "link": "/services" }
+    },
+    "about": {
+      "id": "about",
+      "title": "会社概要A",
+      "subtitle": "-ABOUT-",
+      "description": "最新の技術と確かな施工で、お客様の理想の住環境を実現します。水回りのリフォームから設備の修理まで、あらゆるニーズにお応えします。",
+      "backgroundImage": "/phot8.jpg",
+      "primaryButton": { "text": "無料見積もりを依頼", "link": "/contact" },
+      "secondaryButton": { "text": "サービス詳細", "link": "/services" }
+    },
+    "recruit": {
+      "id": "recruit",
+      "title": "採用情報",
+      "subtitle": "-RECRUIT-",
+      "description": "アイミット株式会社は、志のある新しい仲間を求めています。未経験者の方・経験者の方、アルバイトを始めて一歩を踏み出したい方など歓迎します。",
+      "backgroundImage": "/recruit_imag.jpg",
+      "primaryButton": { "text": "無料見積もりを依頼", "link": "/contact" },
+      "secondaryButton": { "text": "サービス詳細", "link": "/services" }
+    },
+    "questions": {
+      "id": "questions",
+      "title": "よくある質問",
+      "subtitle": "-QUESTIONS-",
+      "description": "お客様から寄せられる疑問・質問にお答えしています。",
+      "backgroundImage": "/questions2.jpg",
+      "primaryButton": { "text": "無料見積もりを依頼", "link": "/contact" },
+      "secondaryButton": { "text": "サービス詳細", "link": "/services" }
+    },
+    "contact": {
+      "id": "contact",
+      "title": "お問合せフォーム",
+      "subtitle": "-CONTACT FORM-",
+      "description": "給湯器に関することのご質問・ご相談、トラブルでお困りの方、<br />お気軽にお問合せ下さい。",
+      "backgroundImage": "/contact_form.jpg",
+      "primaryButton": { "text": "無料見積もりを依頼", "link": "/contact" },
+      "secondaryButton": { "text": "サービス詳細", "link": "/services" }
+    },
+    "project": {
+      "id": "project",
+      "title": "施工事例",
+      "subtitle": "-PROJECT SAMPLE-",
+      "description": "実績を重ねた施工事例の紹介をしています。",
+      "backgroundImage": "/project_samles.jpg",
+      "primaryButton": { "text": "無料見積もりを依頼", "link": "/contact" },
+      "secondaryButton": { "text": "サービス詳細", "link": "/services" }
+    },
+    "privacy": {
+      "id": "privacy",
+      "title": "個人情報保護ご方針",
+      "subtitle": "-PRIVACY PRICY-",
+      "description": " お客様の個人情報保護を厳格に遵守し、お客様の信頼を第一に考えています。",
+      "backgroundImage": "/project_samles.jpg",
+      "primaryButton": { "text": "無料見積もりを依頼", "link": "/contact" },
+      "secondaryButton": { "text": "サービス詳細", "link": "/services" }
+    }
+}
+  

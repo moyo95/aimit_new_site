@@ -1,28 +1,51 @@
 "use client";
 import { useState, useEffect, CSSProperties } from "react";
 import { motion } from "framer-motion";
-import { Menu, X, Home, Wrench, Phone, Info } from "lucide-react";
+import { Menu, X, Home, Wrench, Phone, Info, HandPlatter,Building2, UserRound, ShoppingCart, MessageCircleQuestion, GlobeLock, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from 'next/image';
+import debounce from 'lodash/debounce';
 
 export default function Navbar() {
+  
   const [isOpen, setIsOpen] = useState(false);
   const [isPastSection, setIsPastSection] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = debounce(() => {
       const servicesSection = document.getElementById("services");
       const aboutSection = document.getElementById("about");
+      const contactSection = document.getElementById("contact");
+      const serviceSection = document.getElementById("service");
+      const privacySection = document.getElementById("privacy");
+      const questionSection = document.getElementById("questions");
       const scrollY = window.scrollY;
 
-      if (servicesSection || aboutSection) {
+      if (servicesSection || aboutSection || contactSection || serviceSection || privacySection || questionSection) {
         const servicesSectionTop = servicesSection ? servicesSection.offsetTop : Infinity;
         const aboutSectionTop = aboutSection ? aboutSection.offsetTop : Infinity;
-        const sectionTop = Math.min(servicesSectionTop, aboutSectionTop);
+        const contactSectionTop = contactSection ? contactSection.offsetTop : Infinity;
+        const serviceSectionTop = serviceSection ? serviceSection.offsetTop : Infinity;
+        const privacySectionTop = privacySection ? privacySection.offsetTop : Infinity;
+        const questionSectionTop = questionSection ? questionSection.offsetTop : Infinity;
+        const sectionTop = Math.min(
+          servicesSectionTop,
+          aboutSectionTop,
+          contactSectionTop,
+          serviceSectionTop,
+          privacySectionTop,
+          questionSectionTop
+        );
+
+        console.log("スクロール位置:", scrollY);
+        console.log("セクション上部位置:", sectionTop);
 
         setIsPastSection(scrollY >= sectionTop);
       }
-    };
+    },100);
+
+  
+    
 
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -32,78 +55,111 @@ export default function Navbar() {
 
   const menuItems = [
     { name: "ホーム", icon: Home, href: "/" },
-    { name: "サービス", icon: Wrench, href: "/services" },
-    { name: "会社概要", icon: Info, href: "/about" },
-    { name: "採用情報", icon: Info, href: "/recruit" },
-    { name: "お問い合わせ", icon: Phone, href: "/contact" },
+    { name: "サービス", icon: HandPlatter, href: "/services" },
+    { name: "会社概要", icon: Building2, href: "/about" },
+    { name: "採用情報", icon: UserRound, href: "/recruit" },
+    { name: "よくある質問", icon: MessageCircleQuestion, href: "/questions" },
+    { name: "お問い合わせ", icon: Mail, href: "/contact" },
+  ];
+
+  const mobileMenuItems = [
+    { name: "ホーム", icon: Home, href: "/" },
+    { name: "サービス", icon: HandPlatter, href: "/services" },
+    { name: "施工事例", icon: Wrench, href: "/services/gallery" },
+    { name: "会社概要", icon: Building2, href: "/about" },
+    { name: "採用情報", icon: UserRound, href: "/recruit" },
+    { name: "ショッピング", icon: ShoppingCart, href: "/https://u-plus-ec.jp" },
+    { name: "よくある質問", icon: MessageCircleQuestion, href: "/questions" },
+    { name: "プライバシー", icon: GlobeLock, href: "/privacy" },
+    { name: "お問い合わせ", icon: Mail, href: "/contact" },
   ];
 
   return (
-    <nav className={`fixed w-full ${isPastSection ? 'bg-black' : 'bg-gray/80'} py-1 backdrop-blur-md z-50 shadow-sm`} 
-    style={
-      {
-        '--tw-bg-opacity': isPastSection ? '0.6' : '0.5',
-      } as CSSProperties
-    }>
-      {/*max-w-7xl*/}
-      <div className=" mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex-shrink-0">
-            <a href="/"><Image src="/logo2.png" alt="住設プロ" width={100} height={50} /></a>
-          </div>
-
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            {menuItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="flex items-center space-x-1 text-white hover:text-primary transition-colors"
-              >
-                <item.icon className="h-4 w-4" />
-                <span>{item.name}</span>
-              </a>
-            ))}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label="メニュー"
-            >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <motion.div
-        initial={{ opacity: 0, height: 0 }}
-        animate={{
-          opacity: isOpen ? 1 : 0,
-          height: isOpen ? "auto" : 0,
-        }}
-        transition={{ duration: 0.3 }}
-        className="md:hidden"
-      >
-        <div className="px-2 pt-2 pb-3 space-y-1 bg-white">
-          {menuItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="flex items-center space-x-2 px-3 py-2 rounded-md text-gray-600 hover:bg-gray-50 hover:text-primary transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              <item.icon className="h-5 w-5" />
-              <span>{item.name}</span>
+    <header id="top">
+      <nav className={`fixed w-full ${isPastSection ? 'bg-black' : 'bg-gray/80'} py-1 backdrop-blur-md z-50 shadow-sm`} 
+      style={
+        {
+          '--tw-bg-opacity': isPastSection ? '0.6' : '0.5',
+        } as CSSProperties
+      }>
+        {/*max-w-7xl*/}
+        <div className=" overflow-x-hidden mx-auto max-w-full px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex-shrink-0">
+            <a href="/">
+                <Image
+                  src="/logo2.png"
+                  alt="Logo"
+                  width={245} // ここで適切な幅を指定
+                  height={113} // ここで適切な高さを指定
+                  // style={{ objectFit: 'cover', width: '100', height: 'auto'}}
+                  style={{ width: "100px", height: "auto" }}
+                  priority
+                  className="rounded-md"
+                />
             </a>
-          ))}
+            </div>
+
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center space-x-8 nav-menu">
+              {menuItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="flex items-center space-x-1 text-white hover:text-primary transition-colors nav-item"
+                >
+                  <item.icon className="h-4 w-4" />
+                  <span>{item.name}</span>
+                </a>
+              ))}
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsOpen(!isOpen)}
+                aria-label="メニュー"
+                aria-expanded={isOpen}
+                className="text-white focus:outline-none hover:bg-transparent"
+              >
+                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </Button>
+            </div>
+          </div>
         </div>
-      </motion.div>
-    </nav>
+
+        {/* Mobile Menu */}
+        <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{
+              opacity: isOpen ? 1 : 0,
+              height: isOpen ? "auto" : 0,
+            }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden"
+          >
+            <div className="flex flex-col items-start justify-start px-2 pt-20 pb-3 min-h-screen space-y-1 bg-white">
+              {mobileMenuItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="flex items-center space-x-2 px-[30%] py-2 rounded-md text-gray-600 hover:bg-gray-50 hover:text-primary transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <item.icon className="h-5 w-5" />
+                  <span className="text-lg">{item.name}</span>
+                </a>
+              ))}
+            </div>
+          </motion.div>
+
+
+
+
+
+      </nav>
+    </header>
   );
 }

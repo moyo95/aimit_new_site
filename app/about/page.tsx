@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion";
 import { Award, Users, Clock, ThumbsUp } from "lucide-react";
-import HeroAbout from "../components/HeroAbout";
 import Image from 'next/image';
+import Heros from "../components/Heros";
+import heroData from "../../public/data/heroData.json";
 
 const stats = [
   { icon: Users, value: "1000+", label: "お客様対応実績" },
@@ -15,7 +16,15 @@ const stats = [
 export default function About() {
   return (
     <>
-    <HeroAbout />
+    <Heros
+      id={heroData.about.id}
+      title={heroData.about.title}
+      subtitle={heroData.about.subtitle}
+      description={heroData.about.description}
+      backgroundImage={heroData.about.backgroundImage}
+      primaryButton={heroData.about.primaryButton}
+      secondaryButton={heroData.about.secondaryButton}
+      />
     <section id="about" className="py-20">
       <div className="container mx-auto px-4  my-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
@@ -25,25 +34,24 @@ export default function About() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-6 text-gray-600">私たちについて</h2>
+            <h2 className="text-4xl font-bold mb-6 text-gray-600">私たちについて</h2>
             <p className="text-gray-600 mb-6 leading-loose">
               1993年の創業以来、地域の皆様の住環境の向上に貢献してきました。
               熟練の技術者たちが、最新の技術と長年の経験を活かし、
               お客様一人一人のニーズに合わせた最適なソリューションを提供しています。
             </p>
-            <h3 className="text-xl font-bold mb-2 text-gray-600">企業理念</h3>
+            <h3 className="text-2xl font-bold mb-2 text-gray-600">企業理念</h3>
             <p className="text-gray-600 mb-6 leading-loose">
             現場の強みを社会に還元し、より良い住環境を目指します。<br />
-              24時間365日の緊急対応体制を整え、突発的なトラブルにも迅速に対応。
-              お客様の「困った」を解決し、安心で快適な暮らしをサポートします。
+            また、突発的なトラブルにも迅速に対応。お客様の「困った」を解決し、安心で快適な暮らしをサポートします。
             </p>
-            <h3 className="text-xl font-bold mb-2 text-gray-600">まず心掛ける３つのこと</h3>
+            <h3 className="text-2xl font-bold mb-2 text-gray-600">まず心掛ける３つのこと</h3>
             <ol className="text-gray-600 mb-6 leading-loose">
               <li className="check_icon">工事業者の地位・環境向上に努める「rise」立ち上がろう</li>
               <li className="check_icon">相手が求めているものを追求する「ask」尋ねよう</li>
               <li className="check_icon">とにかくやってみる！「try」進めよう</li>
             </ol>
-            <h3 className="text-xl font-bold mb-2 text-gray-600">そしてすべきこと</h3>
+            <h3 className="text-2xl font-bold mb-2 text-gray-600">そしてすべきこと</h3>
             <ol className="text-gray-600 mb-6 leading-loose">
               <li className="check_icon">やらなければ始まらない</li>
               <li className="check_icon">やれなければ成長しない</li>
@@ -68,7 +76,7 @@ export default function About() {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mt-16 mx-12">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -76,17 +84,19 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="text-center"
+              className="text-center square-grid-item"
             >
+              <div className="square-grid-content ">
               <stat.icon className="h-8 w-8 mx-auto mb-4 text-primary" />
               <div className="text-3xl font-bold text-primary mb-2">{stat.value}</div>
               <div className="text-gray-600">{stat.label}</div>
+              </div>
             </motion.div>
           ))}
         </div>
       </div>
     </section>
-    <section id="about__greeting" className="py-20">
+    <section id="about__greeting" className="py-20 bg-slate-100">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <motion.div
@@ -105,11 +115,12 @@ export default function About() {
               愛される企業になれると確信し、確かな商品とサービスを提供してまいります。
               </p>
             
-            <h3 className="text-xl font-bold mb-2 text-gray-600">まず心掛ける３つのこと</h3>
-            <p className="text-gray-600 mb-2 leading-loose">当社は給湯器に特化した販売・取付サービス会社です。もちろん水回りに関するバス・トイレ・キッチン等にも対応しています。
-               我々アイミットという会社は、世の中に貢献し、仲間を成長させるためのツールだとも言えます。企業理念の通り、
-               この事業を通して地域の方々に喜んでいただき、仲間の成長に繋がれば、これほど嬉しいことはありません。 
-               「名古屋で１番！」を目指し全力で挑戦してまいります。 今後とも一層のご指導ご鞭撻のほどよろしくお願い申し上げます。</p>
+            {/* <h3 className="text-xl font-bold mb-2 text-gray-600">まず心掛ける３つのこと</h3> */}
+            <p className="text-gray-600 mb-2 leading-loose">
+              当社は給湯器に特化した販売・取付サービス会社です。もちろん水回りに関するバス・トイレ・キッチン等にも対応しています。
+              我々「アイミット」という会社は、世の中に貢献し、仲間を成長させるためのツールだとも言えます。企業理念の通り、
+              この事業を通して地域の方々に喜んでいただき、仲間の成長に繋がれば、これほど嬉しいことはありません。 
+              「名古屋で１番！」を目指し全力で挑戦してまいります。 今後とも一層のご指導ご鞭撻のほどよろしくお願い申し上げます。</p>
           </motion.div>
 
           <motion.div
@@ -122,14 +133,14 @@ export default function About() {
           
 
             <div
-              className="rounded-lg overflow-hidden h-[400px] wavy-circle"
+              className="rounded-lg overflow-hidden h-[400px] wavy-circle relative"
               style={{
-                backgroundImage: "url('/phot4.avif')",
+                backgroundImage: "url('/sato.jpg')",
                 backgroundSize: "cover",
-                backgroundPosition: "center",
+                backgroundPosition: "top",
                 backgroundRepeat: "no-repeat",
               }}
-            />
+            /><p className="absolute mt-3">代表取締役社長  佐藤 真仁</p>
           </motion.div>
         </div>
 
@@ -251,46 +262,26 @@ export default function About() {
               </tbody>
             </table>
             
-            <div className="flex flex-wrap justify-center gap-x-10 gap-y-7 mt-10 border py-9">
-            <a href="https://u-plus-ec.jp" className="relative flex items-center space-x-2 rounded-md text-gray-600 hover:bg-gray-50 hover:text-primary transition-transform duration-300 ease-in-out hover:scale-110 hover-border-line">
-                <Image
-                    src="/banner.jpg"
-                    alt="ユープラス" 
-                    width={240} 
-                    height={150}
-                    className="m-0 p-0"
+            <div className="grid grid-cols-2 justify-center gap-x-10 gap-y-7 mt-10 border py-9 px-7">
+              {Array.from({ length: 4 }).map((_, index) => (
+                <a
+                  key={index}
+                  href="https://nekoai.jp"
+                  className="relative flex items-center space-x-2 rounded-md text-gray-600 hover:bg-gray-50 hover:text-primary transition-transform duration-300 ease-in-out hover:scale-110 hover-border-line w-full "
+                >
+                  <div className="responsive-image-container">
+                    <Image
+                      src="/banner.jpg"
+                      alt="ねこ飼いリノベ"
+                      width={240}
+                      height={150}
+                      className="responsive-image"
+                      priority
                     />
+                  </div>
                 </a>
-                <a href="https://nekoai.jp" className="relative flex items-center space-x-2 rounded-md text-gray-600 hover:bg-gray-50 hover:text-primary transition-transform duration-300 ease-in-out hover:scale-110 hover-border-line">
-                  <Image
-                    src="/banner.jpg"
-                    alt="ねこ飼いリノベ" 
-                    width={240} 
-                    height={150}
-                    className="m-0 p-0"
-                    />
-                </a>
-                <a href="https://u-plus-ec.jp" className="relative flex items-center space-x-2 rounded-md text-gray-600 hover:bg-gray-50 hover:text-primary transition-transform duration-300 ease-in-out hover:scale-110 hover-border-line">
-                  <Image
-                    src="/banner.jpg"
-                    alt="ユープラス" 
-                    width={240} 
-                    height={150}
-                    className="m-0 p-0"
-                    />
-                </a>
-                <a href="https://nekoai.jp" className="relative flex items-center space-x-2 rounded-md text-gray-600 hover:bg-gray-50 hover:text-primary transition-transform duration-300 ease-in-out hover:scale-110 hover-border-line">
-                  <Image
-                    src="/banner.jpg"
-                    alt="ねこ飼いリノベ" 
-                    width={240} 
-                    height={150}
-                    className="m-0 p-0"
-                    />
-                </a>
-                
+              ))}
             </div>
-          
 
           </motion.div>
         </div>
@@ -299,13 +290,23 @@ export default function About() {
 
     <section>
     <div className="map-container">
-  <iframe
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3260.455426423596!2d136.935000447047!3d35.19512327274819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x600371066c520d0d%3A0x91f6d65262c351bc!2z44CSNDYyLTA4MTAg5oSb55-l55yM5ZCN5Y-k5bGL5biC5YyX5Yy65bGx55Sw77yR5LiB55uu77yR77yW4oiS77yR77yS!5e0!3m2!1sja!2sjp!4v1741943649827!5m2!1sja!2sjp"
+     style={{border:0}}
+     className="map-iframe"
+     allowFullScreen 
+     loading="lazy"
+     referrerPolicy="no-referrer-when-downgrade"
+     >
+
+     </iframe>
+  {/* <iframe
     src="https://www.google.com/maps/embed?pb=xxxxx"
     style={{ border: 0 }}
     allowFullScreen 
     loading="lazy"
     referrerPolicy="no-referrer-when-downgrade"
-  ></iframe>
+  ></iframe> */}
 </div>
 
 

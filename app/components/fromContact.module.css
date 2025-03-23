@@ -1,0 +1,32 @@
+.pFlowList__item {
+  position: relative; /* 矢印の位置指定に必要 */
+  border: 1px solid #ccc;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #fff;
+  margin-bottom: 34px;
+}
+
+.pFlowList__item:not(:last-child)::after {
+  position: absolute;
+  bottom: -24px;
+  left: calc(50% - 6px);
+  width: 12px;
+  height: 16px;
+  content: "";
+  background-image: url("/arrow.png"); /* 矢印画像のパス */
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.pFlowList__step {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: #333;
+}
+
+.pFlowList__step_num {
+  margin-left: 8px;
+  color: #1e90ff; /* 矢印やステップ番号の色 */
+}

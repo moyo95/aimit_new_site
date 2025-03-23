@@ -1,0 +1,17 @@
+.about-fixed-background {
+  /* position: fixed; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/phot5.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.dark-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}

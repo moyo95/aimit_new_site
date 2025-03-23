@@ -2,33 +2,100 @@
 
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Droplet, Thermometer, Home, Wrench, Shield, Clock } from "lucide-react";
-import HeroService from "../components/HeroService";
+import { Droplet, Thermometer, Home, Wrench, Shield, Clock, Building, SquareSquare, ShoppingCart } from "lucide-react";
+import HeroService from "../components/Heros";
+import Image from 'next/image';
+import Heros from "../components/Heros";
+import heroData from "../../public/data/heroData.json";
 
-const services = [
+
+// export const metadata = {
+//   title: "サービス内容 | アイミット株式会社 - 名古屋市で",
+//   description: "当社のサービス内容をご紹介します。お客様のニーズに応じたプロフェッショナルな対応を提供。詳しくはお問い合わせください。",
+//   keywords: "サービス, サポート, アイミット株式会社, 名古屋市",
+
+//   "og:title": "サービス内容 | [会社名]",
+//   "og:description": "プロフェッショナルなサポート内容をご紹介。詳細はこちら。",
+//   "og:image": "/path-to-image.jpg", // OGP用の画像URLを設定
+//   "og:url": "https://example.com/services",
+//   "twitter:card": "summary_large_image",
+//   "twitter:title": "サービス内容 | [会社名]",
+//   "twitter:description": "プロフェッショナルなサービス内容を紹介しています。",
+//   "twitter:image": "/path-to-image.jpg",
+//   "canonical": "https://example.com/services",
+// };
+
+// 型定義
+type Service = {
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  description: string;
+  link:string;
+};
+
+type Feature = {
+  icon: React.ComponentType;
+  title: string;
+  description: string;
+};
+
+type IconProps = {
+  className?: string;
+};
+
+const CustomIcon: React.FC<IconProps> = ({ className }) => (
+  <svg className={className} /* 他の属性 */></svg>
+);
+
+
+// サービス配列
+const services: Service[] = [
   {
     icon: Droplet,
-    title: "給排水設備",
-    description: "水道管の修理・交換から、新規設置まで。漏水対策も万全です。",
+    title: "給湯器の販売・取付",
+    description: "給湯器の交換から、新規設置まで。漏水対策も万全です。",
+    link:"#link01",
   },
   {
     icon: Thermometer,
-    title: "空調設備",
-    description: "エアコンの設置・メンテナンス。最新の省エネ機器もご提案。",
+    title: "トイレの販売・取付",
+    description: "新製品から人気の省エネ製品まで、お客様のご要望を元にご提案します。",
+    link:"#link02",
   },
   {
     icon: Home,
-    title: "住宅設備",
-    description: "キッチン、お風呂、トイレなど、住宅設備のリフォーム・修理。",
+    title: "レンジフードの販売・取付",
+    description: "キッチン設備のレンジフードは、静音・パワフルなものまで最適な製品をご案内します。",
+    link:"#link03",
+  },
+  {
+    icon: SquareSquare,
+    title: "コンロの販売・取付",
+    description: "便利なオール電化製品からガスコンロ・ビルトインコンロまで対応します。",
+    link:"#link04",
+  },
+  {
+    icon: Building,
+    title: "取り扱いメーカー",
+    description: "安心・安全、定番の人気メーカーの製品を取り揃えています。",
+    link:"#link05",
   },
   {
     icon: Wrench,
-    title: "修理・メンテナンス",
-    description: "定期点検から緊急修理まで、24時間365日対応可能。",
+    title: "トラブル対応・修理",
+    description: "水回りのトラブルから住宅関連のお困りごとはご相談下さい。",
+    link:"#link06",
+  },
+  {
+    icon: ShoppingCart,
+    title: "ユープラス",
+    description: "住宅設備のショッピングサイト",
+    link:"https://u-plus-ec.jp",
   },
 ];
 
-const features = [
+// フィーチャー配列
+const features: Feature[] = [
   {
     icon: Shield,
     title: "安心の保証制度",
@@ -41,7 +108,11 @@ const features = [
   },
 ];
 
-const Service = () => {
+
+
+export default function Service() {
+
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -62,63 +133,394 @@ const Service = () => {
 
   return (
     <>
-    <HeroService />
-    <section id="service" className="py-20 bg-gray-50">
+    <Heros
+    id={heroData.service.id}
+    title={heroData.service.title}
+    subtitle={heroData.service.subtitle}
+    description={heroData.service.description}
+    backgroundImage={heroData.service.backgroundImage}
+    primaryButton={heroData.service.primaryButton}
+    secondaryButton={heroData.service.secondaryButton}
+     />
+    <section id="service" className="py-20 bg-gray-50 min-h-screen flex items-center">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4">サービス内容</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            プロフェッショナルの技術者が、お客様の快適な暮らしをサポートします。
+          <h2 className="text-4xl font-bold mb-10">サービス内容</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto leading-loose">
+            プロフェッショナルの技術者が、お客様の快適な暮らしをサポートします。<br />
             住宅設備のことなら、どんなことでもお任せください。
           </p>
         </div>
+
+        {/* <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
+          {services.map((service, index) => (
+            <motion.div key={index} variants={itemVariants}>
+              <a href={service.link} rel="noopener noreferrer" className="block">
+              <Card className="h-full hover:shadow-lg transition-shadow" onClick={(e) => {
+                e.preventDefault(); // デフォルトのリンク動作を無効化
+                const target = document.querySelector(service.link);
+                if (target) {
+                  const topOffset = target.getBoundingClientRect().top + window.scrollY; // スクロール先の位置
+                  window.scrollTo({
+                    top: topOffset,
+                    behavior: "smooth", // スムーズスクロール
+                  });
+
+                  // カスタムスクロールの例（一定速度でスクロール）
+                  // let start = window.scrollY;
+                  // const step = 10; // 1フレーム毎にスクロール。
+                }
+              }}>
+                <CardHeader>
+                  {service.icon && (
+                    <service.icon className="h-12 w-12 text-primary mb-4" />
+                  )}
+                  <CardTitle>{service.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription>{service?.description}</CardDescription>
+                </CardContent>
+              </Card>
+              </a>
+            </motion.div>
+          ))}
+        </motion.div> */}
 
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
           {services.map((service, index) => (
             <motion.div key={index} variants={itemVariants}>
-              <Card className="h-full hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <service.icon className="h-12 w-12 text-primary mb-4" />
-                  <CardTitle>{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription>{service.description}</CardDescription>
-                </CardContent>
-              </Card>
+              <a
+                href={service.link}
+                // URL判定で`target`と`rel`を適切に設定
+                target={service.link.startsWith("http") ? "_blank" : undefined}
+                rel={service.link.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="block"
+                onClick={(e) => {
+                  if (service.link.startsWith("#")) {
+                    // 内部リンクの場合
+                    e.preventDefault();
+                    const target = document.querySelector(service.link);
+                    if (target) {
+                      const topOffset = target.getBoundingClientRect().top + window.scrollY;
+                      window.scrollTo({
+                        top: topOffset,
+                        behavior: "smooth", // スムーズスクロール
+                      });
+                    }
+                  }
+                }}
+              >
+                <Card className="h-full hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    {service.icon && (
+                      <service.icon className="h-12 w-12 text-primary mb-4" />
+                    )}
+                    <CardTitle>{service.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription>{service.description}</CardDescription>
+                  </CardContent>
+                </Card>
+              </a>
             </motion.div>
           ))}
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <Card className="bg-primary text-primary-foreground">
-                <CardHeader>
-                  <feature.icon className="h-8 w-8 mb-4" />
-                  <CardTitle>{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p>{feature.description}</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+
+      </div>
+    </section>
+    <section className="min-h-screen py-20 ">
+      <div id="fh5co-services">
+        <div id="link01" className="container m-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 py-10 justify-items-end">
+            {/* 左側（50%） */}
+            <div className="flex justify-center items-start ">
+              <Image
+                src="/img/kyutou1.jpg"
+                width={400}
+                height={400}
+                alt="リンナイ"
+                className="object-cover w-full min-h-[400px] rounded-lg"
+              />
+            </div>
+
+            {/* 右側（50%） */}
+            <div className="col-span-2 order-2 md:order-1 ml-10">
+              <h2 className="text-3xl font-bold mb-6">01.給湯器の販売・取付工事</h2>
+              <h3 className="text-lg font-semibold mb-4">従来型給湯器＜一戸建・マンション＞</h3>
+              <p className="mb-4 leading-loose">
+                ガス給湯器の能力は号数で表示されており、お湯の量は号数によって異なります。
+                号数とは、給湯器の能力を表すもので、水温＋25℃のお湯を1分間に何リットル出すことができるかを表しています。
+                たとえば水温＋25℃のお湯を1分間に24リットルのお湯を出すことのできる能力を24号といいます。
+              </p>
+
+              <h3 className="text-lg font-semibold mb-4">エコジョーズ＜一戸建・マンション＞</h3>
+              <p className="mb-4 leading-loose">
+                「エコジョーズ」と呼ばれる給湯器は、今まで捨てられていた不要な排熱を再利用することにより、
+                従来の給湯器よりも熱効率を高めた省エネ性能の高い給湯器です。
+                従来の給湯器と比較して、同じだけお湯を使っても、ガス使用量が減り、ガス代を節約できます。
+              </p>
+              <div className="my-10 overflow-x-auto">
+                <table className="table-auto border-collapse border border-gray-300 w-full text-left">
+                  <thead>
+                    <tr className="bg-gray-100">
+                      <th className="border border-gray-300 px-4 py-2">番号</th>
+                      <th className="border border-gray-300 px-4 py-2">給湯器の種類</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-2">1</td>
+                      <td className="border border-gray-300 px-4 py-2">給湯専用</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-2">2</td>
+                      <td className="border border-gray-300 px-4 py-2">高温水供給</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-2">3</td>
+                      <td className="border border-gray-300 px-4 py-2">給湯追焚オート</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-2">4</td>
+                      <td className="border border-gray-300 px-4 py-2">暖房機能付オート</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-2">5</td>
+                      <td className="border border-gray-300 px-4 py-2">暖房機能付フルオート</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+
+
+          <div id="link02" className="container mx-auto py-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 py-10 justify-items-end ">
+              
+              <div className="col-span-2 order-2 md:order-1 ml-10 ">
+                <h2 className="text-3xl font-bold mb-6">02.トイレの販売・取付工事</h2>
+                <h3 className="text-lg font-semibold mb-4">一体形（便器と温水洗浄便座が一体になっているタイプ）</h3>
+                <ul className="list-disc ml-6 my-6 leading-loose">
+                  <li>給湯専用</li>
+                  <li>高温水供給</li>
+                  
+                </ul>
+                <h3 className="text-lg font-semibold mb-4">便座＆本体セット（便器、便座、タンクを組み合わせるタイプ）</h3>
+                <p></p>
+                <ul className="list-disc ml-6 my-6 leading-loose">
+                  <li>給湯専用</li>
+                  <li>高温水供給</li>
+                  <li>給湯追焚オート</li>
+                  
+                </ul>
+                <h3 className="text-lg font-semibold mb-4">温水洗浄便座（交換可能な温水洗浄便座）</h3>
+                <p></p>
+                <ul className="list-disc ml-6 my-6 leading-loose">
+                  <li>給湯専用</li>
+                  <li>高温水供給</li>
+                  
+                </ul>
+              </div>
+
+              <div className="order-1 md:order-2 flex justify-center items-start col-span-1">
+                  <Image
+                        src="/img/toire1.jpg"
+                        width={400}
+                        height={400}
+                        alt="リンナイ"
+                        className="object-fit w-full min-h-[400px] rounded-lg"
+                      />
+                
+              </div>
+            </div>
+          </div>
+
+          
+
+          <div id="link03" className="container m-auto  py-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 py-10">
+              {/* 画像部分 */}
+              <div className="rounded-lg min-h-[400px] flex justify-center items-center ">
+                <Image
+                  src="/img/food.jpg"
+                  width={400}
+                  height={400}
+                  alt="リンナイ"
+                  className="object-fit w-full min-h-[400px] rounded-lg "
+                />
+              </div>
+              {/* テキスト部分 */}
+              <div className="col-span-2 order-2 md:order-1">
+                <h2 className="text-3xl font-bold mb-6">03.レンジフードの販売・取付工事</h2>
+                <h3 className="text-lg font-semibold mb-4">フードの形状</h3>
+                <ul className="list-disc ml-6 my-6 leading-loose">
+                  <li>ブーツ型</li>
+                  <li>フラット型・平型・浅型</li>
+                  <li>スリム型</li>
+                </ul>
+
+                <h3 className="text-lg font-semibold mb-4">取り付けタイプ</h3>
+                <ul className="list-disc ml-6 my-6 leading-loose">
+                  <li>壁面取付けタイプ</li>
+                  <li>横壁面取付けタイプ</li>
+                  <li>天井取付けタイプ</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+          <div id="link04" className="container m-auto  py-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 py-10 justify-items-end ">
+              <div className="col-span-2 order-2 md:order-1 ml-10">
+                <h2 className="text-3xl font-bold mb-6">04.コンロの販売・取付工事</h2>
+                <h3 className="text-lg font-semibold mb-4">従来型給湯器＜一戸建・マンション＞</h3>
+               
+                <p></p>
+                <ul className="list-disc ml-6 my-6 leading-loose">
+                  <li>ビルトインコンロ</li>
+                  <li>テーブルコンロ</li>
+                  
+                </ul>
+              </div>
+              <div className="order-1 md:order-2 flex justify-center items-center col-span-1">
+                <div className="fh5co-icon">
+                  <Image
+                        src="/img/conro.jpg"
+                        width={450}
+                        height={450}
+                        alt="リンナイ"
+                        className="object-fit w-auto min-h-[400px] rounded-lg"
+                      />
+                  </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div id="link05" className="container m-auto  py-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 py-10 ">
+                {/* 画像部分 */}
+              <div className="rounded-lg border border-gray-300 min-h-[400px] flex justify-center items-center">
+                <div className="fh5co-icon">
+                  <Image
+                  src="/img/toria.png"
+                  width={400}
+                  height={400}
+                  alt="リンナイ"
+                  className="object-cover w-full min-h-auto rounded-lg"
+                        />
+                </div>
+              </div>
+               {/* テキスト部分 */}
+              <div className="col-span-2 order-2 md:order-1 ">
+              <h2 className="text-3xl font-bold mb-6">05.取り扱いメーカー</h2>
+              <h3 className="text-lg font-semibold mb-4">定番の人気メーカーの製品を取り揃えています。</h3>
+                
+                <p></p>
+                <ul className="list-disc ml-6 my-6 leading-loose">
+                  <li><a className="iro" href="http://rinnai.jp/top" target="_blank">リンナイ</a></li>
+                  <li><a className="iro" href="http://www.paloma.co.jp/product/" target="_blank">パロマ</a></li>
+                  <li><a className="iro" href="http://www.noritz.co.jp/product/kyutoki/gus.html" target="_blank">ノーリツ</a></li>
+                  <li><a className="iro" href="http://sumai.panasonic.jp/hp/"  target="_blank">パナソニック</a></li>
+                  <li>日立</li>
+                </ul>
+                <div className="mt-10">             
+                <ul className="flex justify-start space-x-7">
+                  <li>
+                    <Image
+                      src="/img/site_logo.png"
+                      width={110}
+                      height={140}
+                      alt="リンナイ"
+                      className="img-responsive"
+                    />
+                  </li>
+                  <li>
+                    <Image
+                      src="/img/logo_palom.png"
+                      width={110}
+                      height={152}
+                      alt="パロマ"
+                      className="img-responsive"
+                    />
+                  </li>
+                  <li>
+                    <Image
+                      src="/img/logo_noritz.gif"
+                      width={120}
+                      height={152}
+                      alt="ノーリツ"
+                      className="img-responsive"
+                    />
+                  </li>
+                  <li>
+                    <Image
+                      src="/img/logo_pana.png"
+                      width={130}
+                      height={152}
+                      alt="パナソニック"
+                      className="img-responsive"
+                    />
+                  </li>
+                </ul>        
+            </div>
+              </div>
+            </div> 
+          </div>
+
+          
+        
+
+          <div id="link06" className="container m-auto  py-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 py-10 justify-items-end ">
+              <div className="col-span-2 order-2 md:order-1 ml-10">
+                <h2 className="text-3xl font-bold mb-6">06.トラブル対応・修理</h2>
+                <h3 className="text-lg font-semibold mb-4">
+                  給湯器のトラブルを中心にお客様のお困りごとに<br />誠心誠意、取り組んでいます。</h3>
+               
+                <p></p>
+                <ul className="list-disc ml-6 my-6 leading-loose">
+                  <li>給湯器のトラブル</li>
+                  <li>温度が安定しない</li>
+                  <li>蛇口の水漏れ</li>
+                  <li>排水口の詰り</li>
+                  <li>トイレの詰り</li>
+                  
+                </ul>
+              </div>
+              <div className="order-1 md:order-2 flex justify-center items-center col-span-1">
+                <div className="fh5co-icon">
+                  <Image
+                        src="/mente.png"
+                        width={400}
+                        height={400}
+                        alt="リンナイ"
+                        className="object-fit w-auto min-h-auto rounded-lg"
+                      />
+                  </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
     </>
   );
 }
-export default Service;
