@@ -10,6 +10,9 @@ export default function Navbar() {
   
   const [isOpen, setIsOpen] = useState(false);
   const [isPastSection, setIsPastSection] = useState(false);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen); // メニューの表示状態を反転
+  };
 
   useEffect(() => {
     const handleScroll = debounce(() => {
@@ -117,9 +120,10 @@ export default function Navbar() {
             {/* Mobile Menu Button */}
             <div className="md:hidden">
               <Button
+              onClick={toggleMenu}
                 variant="ghost"
                 size="icon"
-                onClick={() => setIsOpen(!isOpen)}
+                // onClick={() => setIsOpen(!isOpen)}
                 aria-label="メニュー"
                 aria-expanded={isOpen}
                 className="text-white focus:outline-none hover:bg-transparent"
@@ -132,7 +136,7 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         <motion.div
-            initial={{ opacity: 0, height: 0 }}
+            initial={{ opacity: 0, height: 0, }}
             animate={{
               opacity: isOpen ? 1 : 0,
               height: isOpen ? "auto" : 0,
@@ -140,7 +144,9 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
             className="md:hidden"
           >
-            <div className="flex flex-col items-start justify-start px-2 pt-20 pb-3 min-h-screen space-y-1 bg-white">
+            <div className={`flex flex-col items-start justify-start px-2 pt-20 pb-3 min-h-screen space-y-1 bg-white ${
+    isOpen ? "block" : "hidden"
+  }`}>
               {mobileMenuItems.map((item) => (
                 <a
                   key={item.name}

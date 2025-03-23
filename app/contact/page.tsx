@@ -96,7 +96,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <Card className="p-6 bg-primary text-primary-foreground absolute bottom-0">
+            <Card className="p-6 mt-8 bg-primary text-primary-foreground static md:absolute bottom-0">
               <h3 className="text-xl font-semibold mb-4">緊急の修理依頼</h3>
               <p className="mb-4">
                 水漏れなどの緊急を要する修理は、お電話にて 9:00~18:00 の間で受け付けております。

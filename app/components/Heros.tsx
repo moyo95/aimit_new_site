@@ -49,11 +49,9 @@ interface HerosProps {
           transition={{ duration: 0.5 }}
           className="max-w-3xl"
         >
-            <h1 className="flex items-center text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            <h1 className="block md:flex items-center text-4xl md:text-5xl font-bold text-white mb-6 md:leading-tight leading-8">
             {title}
-            <span className="text-3xl my-auto mx-4">{subtitle}</span>
-              <p></p>
-              
+            <span className="inline-block text-xl md:text-3xl my-0 md:my-auto">{subtitle}</span> 
             </h1>
             <p className="text-sl md:text-xl text-gray-200 mb-8">{description}</p>
             <div className="flex flex-wrap gap-4">
