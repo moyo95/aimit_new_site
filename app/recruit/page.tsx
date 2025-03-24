@@ -88,6 +88,7 @@ export default function Recruit() {
                   alt="住設プロ"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // 画面サイズに応じた画像サイズを指定
                   fill
+                  quality={80} // 画像品質を指定
                   style={{ objectFit: 'cover' }}
                   className="rounded-lg"
                   />
@@ -145,7 +146,7 @@ export default function Recruit() {
       
     </section>
     <FromContact
-       className="bg-gray-300"
+       className="bg-gradient-to-tr from-gray-400 to-gray-100 "
        />
     </>
   );

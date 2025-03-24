@@ -12,7 +12,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gray-900 text-gray-300 overflow-x-hidden max-w-full ">
+    <footer className="bg-gray-900 text-gray-300 overflow-x-hidden max-w-full z-10 ">
       <div className="md:mx-auto px-4 py-10 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="col-span-1 md:col-span-2">

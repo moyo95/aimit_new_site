@@ -5,7 +5,7 @@ import { Menu, X, Home, Wrench, Phone, Info, HandPlatter,Building2, UserRound, S
 import { Button } from "@/components/ui/button";
 import Image from 'next/image';
 import debounce from 'lodash/debounce';
-
+import Logo from "./Logo";
 
 export default function Navbar() {
   
@@ -88,18 +88,8 @@ export default function Navbar() {
         <div className=" overflow-x-hidden mx-auto max-w-full px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
-            <a href="/">
-                <Image
-                  src="/logo2.png"
-                  alt="Logo"
-                  width={245} // ここで適切な幅を指定
-                  height={113} // ここで適切な高さを指定
-                  // style={{ objectFit: 'cover', width: '100', height: 'auto'}}
-                  style={{ width: "100px", height: "auto" }}
-                  priority
-                  className="rounded-md"
-                />
-            </a>
+            
+            <Logo />
             </div>
 
             {/* Desktop Menu */}
