@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, Users, Clock, ThumbsUp } from "lucide-react";
+import { Award, Users, Clock, ThumbsUp, Target } from "lucide-react";
 import Image from 'next/image';
 import Heros from "../components/Heros";
 import heroData from "../../public/data/heroData.json";
@@ -262,7 +262,7 @@ export default function About() {
               </tbody>
             </table>
             
-            <div className="grid grid-cols-2 justify-center gap-3 md:gap-x-10 md:gap-y-7 mt-10 border p-3 md:py-9 md:px-7">
+            {/* <div className="grid grid-cols-2 justify-center gap-3 md:gap-x-10 md:gap-y-7 mt-10 border p-3 md:py-9 md:px-7">
               {Array.from({ length: 4 }).map((_, index) => (
                 <a
                   key={index}
@@ -281,7 +281,33 @@ export default function About() {
                   </div>
                 </a>
               ))}
-            </div>
+            </div> */}
+            <div className="grid grid-cols-2 justify-center gap-3 md:gap-x-10 md:gap-y-7 mt-10 border p-3 md:py-9 md:px-7">
+                          {[
+                            { src: "/banaer_uplus.jpg", alt: "名古屋の給湯器ユープラス", href: "https://u-plus-ec.jp/" ,target: "_blank" },
+                            { src: "/banaer_tasuke.jpg", alt: "猫カフェta助", href: "#" ,target: "_blank" },
+                            { src: "/banaer_renobe.jpg", alt: "ねこ飼いリノベ", href: "https://nekoai.jp/",target: "_blank" },
+                            { src: "/banaer_oyakata.jpg", alt: "水道工事の親方", href: "https://suidokoji-oyakata.com/" ,target: "_blank"},
+                          ].map((item, index) => (
+                            <a
+                              key={index}
+                              href={item.href}
+                              target={item.target}
+                              className="relative flex items-center space-x-2 rounded-md text-gray-600 hover:bg-gray-50 hover:text-primary transition-transform duration-300 ease-in-out hover:scale-110 hover-border-line w-full"
+                            >
+                              <div className="responsive-image-container bg-gray-100 border border-gray-300">
+                                <Image
+                                  src={item.src}
+                                  alt={item.alt}
+                                  width={240}
+                                  height={150}
+                                  className="responsive-image"
+                                  priority
+                                />
+                              </div>
+                            </a>
+                          ))}
+                        </div>
 
           </motion.div>
         </div>

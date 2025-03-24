@@ -312,3 +312,50 @@ body {
   background-color: rgba(0, 0, 0, 0.4); /* 半透明の黒背景 */
   z-index: 0; /* 必要に応じて調整 */
 }
+
+/* mobileメニューアニメーションとデザインの設定 */
+.menu-container {
+}
+
+/* メニューアイテムの設定 */
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  /* border-radius: 8px; アイテム間のエッジを丸く */
+  color: #666;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  border-bottom: 1px solid #e0e0e0;
+  width: 100%;
+  margin: 0;
+}
+.menu-item:first-child {
+  border-top: 1px solid #e0e0e0;
+  width: 100%; /* 最後の項目に線を入れない */
+}
+.menu-item:last-child {
+  margin-bottom: 5rem;
+}
+
+/* アイテムホバーエフェクト */
+.menu-item:hover {
+  background-color: #f0f0f0; /* ホバー時に薄いグレー */
+  color: #007bff; /* 青系のアクセント */
+  transform: translateX(10px); /* なめらかな右ズレ */
+}
+
+/* アイコンのスタイリング */
+.menu-item .icon {
+  margin-right: 12px;
+  color: #666; /* アイコンにアクセントカラー */
+  font-size: 1.5rem;
+}
+
+/* メディアクエリ */
+@media (max-width: 768px) {
+  .menu-container {
+    width: 100%;
+    border-radius: 0;
+  }
+}

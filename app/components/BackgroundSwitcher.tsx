@@ -5,7 +5,7 @@ const BackgroundSwitcher = () => {
   const [currentImage, setCurrentImage] = useState(0); // 現在表示中の画像インデックス
 
   // useMemoでimagesを固定
-  const images = useMemo(() => ["/phot1.avif", "/phot7.jpg", "/phot2.jpg","/phot8.jpg"], []);
+  const images = useMemo(() => ["/phot1.jpg", "/phot7.jpg", "/phot2.jpg","/phot8.jpg"], []);
 
 
   useEffect(() => {

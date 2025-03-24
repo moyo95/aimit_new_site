@@ -17,20 +17,7 @@ export default function Hero() {
 
   return (
     <div className="relative min-h-screen flex items-center overflow-hidden" id="hero">
-      {/* <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url("/phot4.avif")`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          width: "100vw",
-          // position: "fixed",
-          // zIndex: -2,
-          backgroundAttachment: "fixed",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/40" />
-      </div> */}
+      
        <BackgroundSwitcher /> {/* 背景切り替えコンポーネント */}
       <div className="container mx-auto px-4 z-10">
         <motion.div
@@ -40,7 +27,7 @@ export default function Hero() {
           className="max-w-3xl"
         >
           <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            <article className=" gradient-text">
+            <article className="gradient-text">
               <p className="text-primary-foreground leading-tight underline">アイミットの目指す</p>
               <p className="text-primary-foreground leading-tight">
                 快適な暮らしを支える住宅設備のプロフェッショナル<span className="text-yellow-300 !important">『地域No.1』</span>

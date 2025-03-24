@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import Image from 'next/image';
 import debounce from 'lodash/debounce';
 
+
 export default function Navbar() {
   
   const [isOpen, setIsOpen] = useState(false);
@@ -47,8 +48,6 @@ export default function Navbar() {
       }
     },100);
 
-  
-    
 
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -142,29 +141,52 @@ export default function Navbar() {
               height: isOpen ? "auto" : 0,
             }}
             transition={{ duration: 0.3 }}
-            className="md:hidden"
+            className="menu-container md:!hidden"
           >
             <div className={`flex flex-col items-start justify-start px-2 pt-20 pb-3 min-h-screen space-y-1 bg-white ${
-    isOpen ? "block" : "hidden"
-  }`}>
+              isOpen ? "block" : "hidden"
+            }`}>
               {mobileMenuItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="flex items-center space-x-2 px-[30%] py-2 rounded-md text-gray-600 hover:bg-gray-50 hover:text-primary transition-colors"
+                  className="menu-item"
                   onClick={() => setIsOpen(false)}
                 >
-                  <item.icon className="h-5 w-5" />
+                  <item.icon className="icon h-5 w-5" />
                   <span className="text-lg">{item.name}</span>
                 </a>
               ))}
+           
+           <div className="grid grid-cols-2 justify-center gap-2 !mt-5">
+              {[
+                { src: "/banaer_uplus.jpg", alt: "名古屋の給湯器ユープラス", href: "https://u-plus-ec.jp/" ,target: "_blank" },
+                { src: "/banaer_tasuke.jpg", alt: "猫カフェta助", href: "#" ,target: "_blank" },
+                { src: "/banaer_renobe.jpg", alt: "ねこ飼いリノベ", href: "https://nekoai.jp/",target: "_blank" },
+                { src: "/banaer_oyakata.jpg", alt: "水道工事の親方", href: "https://suidokoji-oyakata.com/" ,target: "_blank"},
+              ].map((item, index) => (
+                <a
+                  key={index}
+                  href={item.href}
+                  target={item.target}
+                  className="relative flex items-center space-x-2 rounded-md text-gray-600 hover:bg-gray-50 hover:text-primary transition-transform duration-300 ease-in-out hover:scale-110 hover-border-line w-full"
+                >
+                  <div className="responsive-image-container bg-gray-100 border border-gray-300">
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      width={240}
+                      height={150}
+                      className="responsive-image"
+                      priority
+                    />
+                  </div>
+                </a>
+              ))}
+            </div>
+
             </div>
           </motion.div>
-
-
-
-
-
       </nav>
     </header>
   );

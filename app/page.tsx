@@ -1,3 +1,4 @@
+"use client";
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Heros from './components/Heros';
@@ -14,7 +15,6 @@ export default function Home() {
   return (
     <main>
       
-      {/* <Hero /> */}
       <Hero/>
       {/* <SpreadsheetData /> */}
       <Services />

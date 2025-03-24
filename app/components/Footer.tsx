@@ -74,7 +74,7 @@ export default function Footer() {
             <div>
               <ul className="space-y-2">
                 <li>
-                  <a href="/https://u-plus-ec.jp" className="hover:text-white transition-colors">
+                  <a href="https://u-plus-ec.jp" target="_blank" className="hover:text-white transition-colors">
                     ショッピング
                   </a>
                 </li>
