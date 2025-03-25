@@ -7,12 +7,31 @@ import BackgroundSwitcher from "./BackgroundSwitcher";
 
 export default function Hero() {
   // スクロールする関数
+  // const scrollToSection = () => {
+  //   const targetSection = document.getElementById("services"); // スクロール先のID
+  //   if (targetSection) {
+  //     targetSection.scrollIntoView({ behavior: "smooth" }); // スムーズスクロール
+  //   }
+  // };
   const scrollToSection = () => {
     const targetSection = document.getElementById("services"); // スクロール先のID
-    if (targetSection) {
-      targetSection.scrollIntoView({ behavior: "smooth" }); // スムーズスクロール
+    const navElement = document.querySelector("#top > nav") as HTMLElement; // 型アサーションでHTMLElementを指定
+  
+    if (targetSection && navElement) {
+      const navHeight = navElement.offsetHeight; // ナビゲーションの高さを取得
+      const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY;
+  
+      window.scrollTo({
+        top: targetPosition - navHeight,
+        behavior: "smooth"
+      });
+    } else {
+      console.error("スクロール対象またはナビゲーションが見つかりません。");
     }
   };
+  
+  
+  
 
 
   return (

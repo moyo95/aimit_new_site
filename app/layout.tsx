@@ -4,6 +4,8 @@ import { Inter } from 'next/font/google';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import React, { useState } from 'react';
+import { SessionProvider } from 'next-auth/react';
+import SessionProviderWrapper from './components/SessionProviderWrapper';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -47,11 +49,12 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
       
-      {/* <body className={inter.className.replace('vsc-initialized', '').trim()}> */}
-
-        <Navbar />
-        {children}
-        <Footer />
+          {/* <body className={inter.className.replace('vsc-initialized', '').trim()}> */}
+          <SessionProviderWrapper>
+            <Navbar />
+              {children}
+            <Footer />
+          </SessionProviderWrapper>
         </body>
     </html>
   );

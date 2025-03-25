@@ -1,8 +1,8 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import styles from '../components/Modal.module.css';
-
 interface ModalProps {
+  children?: React.ReactNode; // childrenをオプションに変更
   show: boolean;
   onClose: () => void;
   content: string;
@@ -39,5 +39,8 @@ const Modal: FC<ModalProps> = React.memo(({ show, onClose, content }) => {
     document.body // モーダルを <body> に描画
   );
 });
+
+// displayNameを明示的に追加
+Modal.displayName = "Modal";
 
 export default Modal;
