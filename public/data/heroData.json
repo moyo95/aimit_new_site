@@ -3,7 +3,7 @@
       "id": "service",
       "title": "サービス",
       "subtitle": "-SERVICE-",
-      "description": "プロフェッショナルの技術者が、お客様の快適な暮らしをサポートします。<br />住宅設備のことなら、どんなことでもお任せください。",
+      "description": "プロフェッショナルの技術者が、お客様の快適な暮らしをサポートします。住宅設備のことなら、どんなことでもお任せください。",
       "backgroundImage": "/phot8.jpg",
       "primaryButton": { "text": "無料見積もりを依頼", "link": "/contact" },
       "secondaryButton": { "text": "サービス詳細", "link": "/services" }
@@ -57,7 +57,7 @@
       "id": "contact",
       "title": "お問合せフォーム",
       "subtitle": "-CONTACT FORM-",
-      "description": "給湯器に関することのご質問・ご相談、トラブルでお困りの方、<br />お気軽にお問合せ下さい。",
+      "description": "給湯器に関することのご質問・ご相談、トラブルでお困りの方、お気軽にお問合せ下さい。",
       "backgroundImage": "/contact_form.jpg",
       "primaryButton": { "text": "無料見積もりを依頼", "link": "/contact" },
       "secondaryButton": { "text": "サービス詳細", "link": "/services" }
