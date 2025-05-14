@@ -190,7 +190,7 @@ const NewsList: React.FC<NewsListProps> = ({
                       {item.isRecent && <span role="img" aria-label="キラキラ">✨</span>} {/* 各 item の isRecent を確認 */}
                     </div>
                     <Link href={`/news/${item.id}`} className="text-base hover:underline"> {/* タイトルのみをリンクにする */}
-                      <h3 className={`text-base text-sm text-gray-500`}>{item.title}</h3>
+                      <h3 className={`text-sm text-gray-500`}>{item.title}</h3>
                     </Link>
                   </div>
                   {/* <p className={`text-gray-700 text-base`} dangerouslySetInnerHTML={{ __html: item.excerpt }} /> */}
