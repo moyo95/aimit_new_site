@@ -6,12 +6,14 @@ import { ArrowRight, ChevronDown  } from "lucide-react";
 import BackgroundSwitcher from "./BackgroundSwitcher";
 import heroData from "../../public/data/heroData.json";
 import React from "react";
+import Image from 'next/image';
 
 interface HerosProps {
     id: string;
     title: string;
-    subtitle: string;
-    description: string;
+    // subtitle: string;
+    subtitle?: string; // 🔥 オプションに変更！
+    description?: string;
     backgroundImage: string;
     primaryButton: { text: string; link: string };
     secondaryButton?: { text: string; link: string };
@@ -28,19 +30,20 @@ interface HerosProps {
   }: HerosProps) {
     
     return (
-      <div className="relative min-h-[600px] flex items-center" id={id}>
+      <div className="relative min-h-[500px] flex items-center" id={id}>
         <div
-        className="absolute inset-0 z-0"
-        style={{
-            backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          width: "100vw",
-          height: "600px",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/40" />
-      </div>
+        id="elea"
+          className="absolute inset-0 z-0"
+          ><Image
+          src={backgroundImage}
+          alt="Background Image"
+          fill
+          style={{ objectFit: 'cover' }}
+          priority // 画像を優先的に読み込む
+        />
+        <div className="absolute inset-0 bg-black opacity-50"></div> {/* オーバーレイ */}
+            <div className="absolute inset-0 bg-black/40" />
+          </div>
         <div className="container mx-auto px-4 z-10">
           <div className="max-w-3xl">
           <motion.div
@@ -49,21 +52,22 @@ interface HerosProps {
           transition={{ duration: 0.5 }}
           className="max-w-3xl"
         >
-            <h1 className="block md:flex items-center text-4xl md:text-5xl font-bold text-white mb-6 md:leading-tight leading-8">
+            <h1 className="block md:flex items-center text-4xl md:text-5xl font-bold text-white mb-4 md:leading-tight leading-8">
             {title}
-            <p className=" text-xl md:text-3xl mt-1 ">{subtitle}</p> 
+            <p className=" text-xl md:text-3xl mt-1 mx-3">{subtitle}</p> 
             </h1>
             
             <p className="text-sl md:text-xl text-gray-200 mb-8">{description}</p>
             <div className="flex flex-wrap gap-4">
               <a href={primaryButton.link}>
-                <Button size="lg" className="bg-primary text-white">
+                <Button size="lg" 
+                className="bg-red-500 text-white">
                   {primaryButton.text}
                 </Button>
               </a>
               {secondaryButton && (
                 <a href={secondaryButton.link}>
-                  <Button size="lg" variant="outline">
+                  <Button size="lg" variant="outline" className="bg-white/10 text-white border-white">
                     {secondaryButton.text}
                   </Button>
                 </a>

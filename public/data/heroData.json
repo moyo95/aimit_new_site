@@ -20,7 +20,16 @@
     "news": {
       "id": "news",
       "title": "最新情報",
-      "subtitle": "-ABOUT-",
+      "subtitle": "-NEWS-",
+      "description": "最新の技術と確かな施工で、お客様の理想の住環境を実現します。水回りのリフォームから設備の修理まで、あらゆるニーズにお応えします。",
+      "backgroundImage": "/company.jpg",
+      "primaryButton": { "text": "無料見積もりを依頼", "link": "/contact" },
+      "secondaryButton": { "text": "サービス詳細", "link": "/services" }
+    },
+    "news_post": {
+      "id": "news_post",
+      "title": "最新情報_詳細",
+      "subtitle": "-NEWS POST-",
       "description": "最新の技術と確かな施工で、お客様の理想の住環境を実現します。水回りのリフォームから設備の修理まで、あらゆるニーズにお応えします。",
       "backgroundImage": "/company.jpg",
       "primaryButton": { "text": "無料見積もりを依頼", "link": "/contact" },
@@ -70,6 +79,25 @@
       "backgroundImage": "/privacys.jpg",
       "primaryButton": { "text": "無料見積もりを依頼", "link": "/contact" },
       "secondaryButton": { "text": "サービス詳細", "link": "/services" }
+    }
+    ,
+    "form": {
+      "id": "login_form",
+      "title": "サーバー接続認証",
+      "subtitle": "-AUTH SERVER-",
+      "description": "投稿の為、サーバーへ接続認証を行います。",
+      "backgroundImage": "/privacys.jpg",
+      "primaryButton": { "text": "無料見積もりを依頼", "link": "/contact" },
+      "secondaryButton": { "text": "サービス詳細", "link": "/services" }
+    },
+    "newpost": {
+      "id": "newpost",
+      "title": "NewPost",
+      "subtitle": "--",
+      "description": "新規投稿を行うページです。",
+      "backgroundImage": "/post_page_img.jpg",
+      "primaryButton": { "text": "トップページへ", "link": "/" },
+      "secondaryButton": { "text": "投稿一覧", "link": "/news" }
     }
 }
   

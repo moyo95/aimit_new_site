@@ -2,8 +2,15 @@
 
 import { motion } from "framer-motion";
 import { Facebook, Twitter, Instagram, Youtube, Phone } from "lucide-react";
+import { useEffect } from "react";
 
 export default function Footer() {
+  useEffect(() => {
+    // ハッシュスクロール防止のために scrollRestoration を manual に設定
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+  }, []);
   const socialLinks = [
     { icon: Facebook, href: "#" },
     { icon: Twitter, href: "#" },
@@ -12,17 +19,17 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gray-900 text-gray-300 overflow-x-hidden max-w-full z-10 ">
+    <footer className="bg-gray-900 text-gray-300 overflow-x-hidden max-w-full z-10 relative">
       <div className="md:mx-auto px-4 py-10 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="col-span-1 md:col-span-2">
             <h2 className="text-2xl font-bold text-white mb-2">アイミット株式会社</h2>
-            <p className="md:flex block"><span className="inline-block md:mr-2">〒 462-0810 </span><span className="inline-block">愛知県名古屋市北区山田１丁目１６−１２</span></p>
-            <p className="mb-2 mt-1 flex items-center">
+            <p className="md:flex block text-sm"><span className="inline-block md:mr-2">〒 462-0810 </span><span className="inline-block">愛知県名古屋市北区山田１丁目１６−１２</span></p>
+            <p className="mb-2 mt-1 flex items-center text-sm">
               <Phone className="h-4 w-4 mr-1" /><a>052-934-7831</a>
               <span className="ml-3">( 9:00~18:00 )</span>
             </p>
-            <p className="mb-4">
+            <p className="mb-4 text-sm">
               快適な暮らしをサポートする住宅設備のプロフェッショナル。<br />
               お客様の「困った」を解決いたします。今すぐお電話下さい！
             </p>
@@ -40,7 +47,7 @@ export default function Footer() {
             </div>
           </div>
   
-          <div className="flex gap-12 justify-start md:justify-end">
+          <div className="flex gap-12 justify-start md:justify-end text-sm">
             <div>
               <ul className="space-y-2">
                 <li>
@@ -101,12 +108,24 @@ export default function Footer() {
         {/* トップへ戻るリンク */}
         <div className="text-center mt-8">
           <button
+            // onClick={() => {
+            //   window.scrollTo({
+            //     top: 0, // ページの一番上
+            //     behavior: "smooth", // スムーズスクロール
+            //   });
+            // }}
             onClick={() => {
-              window.scrollTo({
-                top: 0, // ページの一番上
-                behavior: "smooth", // スムーズスクロール
-              });
+              // ハッシュ付きURLを完全に削除
+              window.history.replaceState({}, document.title, window.location.pathname + window.location.search);
+            
+              // 100ms程度遅らせてからスクロール（Next.jsの副作用が終わるのを待つ）
+              setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }, 100);
             }}
+            
+                   
+            
             className="text-white hover:text-black !no-underline transition-colors  bg-red-500 rounded-full px-6 py-2"
           >
             トップへ戻る

@@ -19,6 +19,8 @@
 
 # misc
 .DS_Store
+._*
+**/._*
 *.pem
 
 # debug
@@ -37,3 +39,4 @@ yarn-error.log*
 next-env.d.ts
 
 住宅設備会社のHPをリニューアルしたいと思います。その為のHPトップペ.txt
+/text

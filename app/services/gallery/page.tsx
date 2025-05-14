@@ -36,6 +36,11 @@ export default function ProjectGallery() {
     fetchImages();
   }, []);
 
+  // モーダルのアプリ要素を設定
+  useEffect(() => {
+    Modal.setAppElement("body"); // 'body'を指定
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0, scale: 0.8 }, // 初期状態
     visible: { opacity: 1, scale: 1 }, // 表示時
@@ -85,6 +90,7 @@ export default function ProjectGallery() {
                   layout="responsive"
                   width={16} // アスペクト比
                   height={9}
+                  priority 
                   className="object-cover rounded-md"
                 />
               </div>
@@ -95,6 +101,7 @@ export default function ProjectGallery() {
           <Modal
               isOpen={isModalOpen}
               onRequestClose={closeModal}
+              ariaHideApp={false}
               contentLabel="Image Modal"
               className="fixed inset-0 flex items-center justify-center"
               overlayClassName="fixed inset-0 bg-black bg-opacity-80"
@@ -114,6 +121,7 @@ export default function ProjectGallery() {
                     alt="拡大表示"
                     width={700}
                     height={500}
+                    priority 
                     className="w-[100%] max-w-full max-h-full"
                   />
                 )}

@@ -104,6 +104,7 @@ export default function Recruit() {
               <Button onClick={() => openModal(modalContent2)} size="sm" className="bg-primary text-white mt-5">
                   詳細はコチラ <ArrowRight className="ml-2 h-4 w-4S" />
                 </Button>
+
             </div>
 
             <div className="mb-16 flex-1">
@@ -125,9 +126,9 @@ export default function Recruit() {
                 </div>
               </div>
               
-                <Button onClick={() => openModal(modalContent3)} size="sm" className="bg-primary text-white mt-5">
+             <Button onClick={() => openModal(modalContent3)} size="sm" className="bg-primary text-white mt-5">
                   詳細はコチラ <ArrowRight className="ml-2 h-4 w-4S" />
-                </Button>
+                </Button> 
               
               <div>
             {/* <button onClick={() => openModal(modalContent1)}>モーダル 1 を開く</button>

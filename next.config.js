@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  images: { unoptimized: true }, // 必要に応じて画像最適化を無効化
+  images: { unoptimized: true,
+    domains: ["example.com"], // 外部ドメインを許可
+   }, 
   eslint: {
     ignoreDuringBuilds: true, // ビルド時にESLintエラーを無視
   },
@@ -13,6 +15,15 @@ const nextConfig = {
   //   ignoreDuringBuilds: true,
   // },
   // images: { unoptimized: true },
+  env: {
+    REACT_APP_SOCKET_URL: process.env.REACT_APP_SOCKET_URL,
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+  },
+  experimental: {
+    optimizeCss: true,
+  },
+  productionBrowserSourceMaps: false,
+  
 };
 
 

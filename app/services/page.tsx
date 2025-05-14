@@ -43,9 +43,6 @@ type IconProps = {
   className?: string;
 };
 
-const CustomIcon: React.FC<IconProps> = ({ className }) => (
-  <svg className={className} /* 他の属性 */></svg>
-);
 
 
 // サービス配列
@@ -249,20 +246,20 @@ export default function Service() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-12 py-5 md:py-10 justify-items-end">
+          className="grid grid-cols-1 md:grid-cols-3 gap-y-12 md:gap-12 py-5 md:py-10 justify-items-start">
             {/* 左側（50%） */}
-            <div className="flex justify-center items-star w-[300px] h-[300px] md:w-[400px] md:h-[400px] overflow-hidden ">
+            <div className="w-auto h-auto md:max-w-[600px] md:max-h-[600px] overflow-hidden ">
               <Image
                 src="/img/kyuto_01.jpg"
-                width={400} /* 幅を固定 */
-                height={400} /* 高さを固定 */
+                width={500} /* 幅を固定 */
+                height={500} /* 高さを固定 */
                 alt="給湯器画像"
                 className="rounded-lg"
               />
             </div>
 
             {/* 右側（50%） */}
-            <div className="col-span-2 order-2 md:order-1 ml-10">
+            <div className="col-span-2 order-2 md:order-1">
               <h2 className="text-2xl md:text-3xl font-bold mb-6">01.給湯器の販売・取付工事</h2>
               <h3 className="text-lg font-semibold mb-4">従来型給湯器＜一戸建・マンション＞</h3>
               <p className="mb-4 leading-loose">
@@ -319,7 +316,7 @@ export default function Service() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           id="link02" className="container mx-auto py-5 md:py-10">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 py-10 justify-items-end ">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-y-12 md:gap-12 md:py-10 justify-items-end ">
               
               <div className="col-span-2 order-2 md:order-1 ml-10 ">
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">02.トイレの販売・取付工事</h2>
@@ -346,11 +343,11 @@ export default function Service() {
                 </ul>
               </div>
 
-              <div className="order-1 md:order-2 flex justify-center items-start col-span-1  w-[300px] h-[300px] md:w-[400px] md:h-[400px] overflow-hidden  object-contain">
+              <div className="order-1 md:order-2 flex justify-center items-start col-span-1  w-auto h-auto md:max-w-[600px] md:max-h-[600px] overflow-hidden  object-contain">
                   <Image
                         src="/img/toire_01.jpg"
-                        width={400}
-                        height={400}
+                        width={500}
+                        height={500}
                         alt="トイレ画像"
                         className="rounded-lg"
                       />
@@ -365,13 +362,13 @@ export default function Service() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             id="link03" className="container m-auto  py-5 md:py-10">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 py-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-y-12 md:gap-12 md:py-10">
               {/* 画像部分 */}
-              <div className="flex justify-center items-center w-[300px] h-[300px] md:w-[400px] md:h-[400px] overflow-hidden">
+              <div className="sm:flex sm:justify-center sm:items-center w-auto h-auto md:max-w-[600px] md:max-h-[600px] overflow-hidden">
                 <Image
                   src="/img/renge_01.jpg"
-                  width={400}
-                  height={400}
+                  width={500}
+                  height={500}
                   alt="レンジフード画像"
                   className=" rounded-lg "
                 />
@@ -402,7 +399,7 @@ export default function Service() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             id="link04" className="container m-auto  py-5 md:py-10">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 py-10 justify-items-end ">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-y-12 md:gap-12 md:py-10 justify-items-end ">
                 <div className="col-span-2 order-2 md:order-1 ml-10">
                   <h2 className="text-2xl md:text-3xl font-bold mb-6">04.コンロの販売・取付工事</h2>
                   <h3 className="text-lg font-semibold mb-4">従来型給湯器＜一戸建・マンション＞</h3>
@@ -414,12 +411,12 @@ export default function Service() {
                     
                   </ul>
                 </div>
-                <div className="order-1 md:order-2 flex justify-center items-center col-span-1 w-[300px] h-[300px] md:w-[400px] md:h-[400px] overflow-hidden">
+                <div className="order-1 md:order-2 flex justify-center items-center col-span-1 w-auto h-auto md:max-w-[600px] md:max-h-[600px] overflow-hidden">
                   <div className="fh5co-icon">
                     <Image
                           src="/img/conro_01.jpg"
-                          width={450}
-                          height={450}
+                          width={500}
+                          height={500}
                           alt="コンロ画像"
                           className="rounded-lg"
                         />
@@ -434,14 +431,14 @@ export default function Service() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             id="link05" className="container m-auto  py-5 md:py-10">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 py-10 ">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-y-12 md:gap-12 md:py-10 ">
                 {/* 画像部分 */}
-              <div className="rounded-lg border border-gray-300 flex justify-center items-center w-[300px] h-[300px] md:w-[400px] md:h-[400px] overflow-hidden">
+              <div className="rounded-lg border border-gray-300 flex justify-center items-center w-auto h-auto md:max-w-[600px] md:max-h-[600px] overflow-hidden">
                 <div className="fh5co-icon">
                   <Image
                   src="/img/maiker_01.jpg"
-                  width={400}
-                  height={400}
+                  width={500}
+                  height={500}
                   alt="メーカーイメージ画像"
                   className=" rounded-lg"
                         />
@@ -510,7 +507,7 @@ export default function Service() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }} 
             id="link06" className="container m-auto  py-5 md:py-10">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 py-10 justify-items-end ">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-y-12 md:gap-12 md:py-10 justify-items-end ">
               <div className="col-span-2 order-2 md:order-1 ml-10">
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">06.トラブル対応・修理</h2>
                 <h3 className="text-lg font-semibold mb-4">
@@ -526,12 +523,12 @@ export default function Service() {
                   
                 </ul>
               </div>
-              <div className="order-1 md:order-2 flex justify-center items-center col-span-1 w-[300px] h-[300px] md:w-[400px] md:h-[400px] overflow-hidden">
+              <div className="order-1 md:order-2 flex justify-center items-center col-span-1 w-auto h-auto md:max-w-[600px] md:max-h-[600px] overflow-hidden">
                 <div className="fh5co-icon">
                   <Image
                         src="/mente.png"
-                        width={400}
-                        height={400}
+                        width={500}
+                        height={500}
                         alt="トラブル対応"
                         className="rounded-lg"
                       />

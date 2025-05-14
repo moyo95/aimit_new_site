@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronDown  } from "lucide-react";
 import BackgroundSwitcher from "./BackgroundSwitcher";
+import { useEffect } from "react";
 
 export default function Hero() {
   // スクロールする関数
@@ -13,26 +14,48 @@ export default function Hero() {
   //     targetSection.scrollIntoView({ behavior: "smooth" }); // スムーズスクロール
   //   }
   // };
+
+  // const scrollToSection = () => {
+  //   const targetSection = document.getElementById("services"); // スクロール先のID
+  //   const navElement = document.querySelector("#top > nav") as HTMLElement; // 型アサーションでHTMLElementを指定
+  
+  //   if (targetSection && navElement) {
+  //     const navHeight = navElement.offsetHeight; // ナビゲーションの高さを取得
+  //     const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY;
+  
+  //     window.scrollTo({
+  //       top: targetPosition - navHeight,
+  //       behavior: "smooth"
+  //     });
+  //   } else {
+  //     console.error("スクロール対象またはナビゲーションが見つかりません。");
+  //   }
+  // };
   const scrollToSection = () => {
     const targetSection = document.getElementById("services"); // スクロール先のID
     const navElement = document.querySelector("#top > nav") as HTMLElement; // 型アサーションでHTMLElementを指定
   
-    if (targetSection && navElement) {
-      const navHeight = navElement.offsetHeight; // ナビゲーションの高さを取得
-      const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY;
-  
-      window.scrollTo({
-        top: targetPosition - navHeight,
-        behavior: "smooth"
-      });
-    } else {
-      console.error("スクロール対象またはナビゲーションが見つかりません。");
+    if (!targetSection) {
+      console.error("スクロール対象が見つかりません。IDが正しいか確認してください。");
+      return;
     }
+  
+    if (!navElement) {
+      console.error("ナビゲーションが見つかりません。セレクタが正しいか確認してください。");
+      return;
+    }
+  
+    const navHeight = navElement.offsetHeight; // ナビゲーションの高さを取得
+    const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY;
+  
+    window.scrollTo({
+      top: targetPosition - navHeight,
+      behavior: "smooth"
+    });
   };
+ 
   
   
-  
-
 
   return (
     <div className="relative min-h-screen flex items-center overflow-hidden" id="hero">
@@ -59,7 +82,7 @@ export default function Hero() {
           </p>
           <div className="flex flex-wrap gap-4">
             <a href="/contact" >
-            <Button size="lg" className="bg-primary text-white">
+            <Button size="lg" className="bg-red-500 text-white">
               無料見積もりを依頼 <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             </a>

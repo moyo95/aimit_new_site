@@ -1,5 +1,5 @@
 export const modalContent1 = `
-<div style="width:96%; hight:96%; max-width:500px; margin:2%; padding:1rem; display:block; justify-content: center;">
+<div style="width:96%;border-radius: 12px; hight:96%; max-width:500px; margin:2%; padding:1rem; display:block; justify-content: center;">
 <h3 style="font-size: 24px; margin-bottom: 10px;">営業スタッフ</h3>
 <p style="font-size: 16px; margin-bottom: 10px;">
     あなたのやり方で、新規顧客を開拓していただくお仕事です。ノルマもありませんので、伸び伸びと活躍していたいと言う方はぜひ挑戦して下さい。当社の営業方針:友人感覚(お客様とはお友達感覚で接してください)女性の方も活躍下さい。
@@ -47,7 +47,7 @@ export const modalContent1 = `
 `;
 
 export const modalContent2 = `
-<div style="width:96%; hight:96%; max-width:500px; margin:2%; padding:1rem; display:block; justify-content: center;">
+<div style="width:96%; border-radius: 12px; hight:96%; max-width:500px; margin:2%; padding:1rem; display:block; justify-content: center;">
 <h3 style="font-size: 24px; margin-bottom: 10px;">事務スタッフ</h3>
 <p style="font-size: 16px; margin-bottom: 10px;">ワードやエクセル等を使用した、一般的な事務作業を担当して下さい。
 </p>
@@ -94,7 +94,7 @@ export const modalContent2 = `
 `;
 
 export const modalContent3 = `
-<div style="width:96%; max-width:500px; hight:96%; margin:2%; padding:1rem; display:block; justify-content: center;">
+<div style="width:96%; border-radius: 12px; max-width:500px; hight:96%; margin:2%; padding:1rem; display:block; justify-content: center;">
 <h3 style="font-size: 24px; margin-bottom: 10px;">施工スタッフ</h3>
 <p style="font-size: 16px; margin-bottom: 10px;">給湯器の取付をメインにお願いします。その他、キッチン・ユニットバス・トイレなどの水回りに
 関連する商品の取付・設置・施工にも携わる機会もあり、 色々な技術も身についていきます。

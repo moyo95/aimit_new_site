@@ -1,3 +1,29 @@
+// components/Modal.tsx
+// import React, { memo } from 'react';
+
+// interface ModalProps {
+//   show: boolean;
+//   onClose: () => void;
+//   content: React.ReactNode;
+// }
+
+// const Modal: React.FC<ModalProps> = memo(({ show, onClose, content }) => {
+//   if (!show) return null;
+
+//   return (
+//     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+//       <div className="bg-white p-5 rounded-lg">
+//         {content}
+//         <button onClick={onClose}>閉じる</button>
+//       </div>
+//     </div>
+//   );
+// });
+
+// Modal.displayName = 'Modal'; // displayNameプロパティを追加
+
+// export default Modal;
+
 import React, { FC, useState, ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import styles from '../components/Modal.module.css';

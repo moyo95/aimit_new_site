@@ -1,33 +1,34 @@
 "use client";
-
+//app/components/LoginModal.tsx
 import React, { useState } from "react";
-import { useSession, signIn, signOut } from "next-auth/react";
-import { SignInPageContent } from "../auth/signin/page"; // SignInPageContentをインポート
+import { useSession, signOut } from "next-auth/react";
+import { SignInPageContent } from "../auth/signin/SignInPageContent";
+import SignUpModal from "./SignUpModal";
 
 const LoginModal = () => {
-  const { data: session } = useSession(); // 認証状態を取得
-  const [isOpen, setIsOpen] = useState(false); // モーダル開閉状態を管理
-  const toggleModal = () => setIsOpen(!isOpen);
-  const [isHovered, setIsHovered] = useState(false); // ホバー状態を管理
+  const { data: session } = useSession();
+  const [isOpen, setIsOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(false); // ログイン/新規登録の切替
+
+  const closeModal = () => {
+    setIsOpen(false);
+    setShowSignUp(false); // 閉じるときはどちらもリセット
+  };
 
   return (
     <>
       {session ? (
-        // ログイン済みの場合の表示
         <div
-          style={{
-            display: "inline-block",
-            position: "relative", // ログアウトボタンを配置するために相対位置
-          }}
-          onMouseEnter={() => setIsHovered(true)} // マウスオーバー時
-          onMouseLeave={() => setIsHovered(false)} // マウスが外れた時
+          style={{ display: "inline-block", position: "relative" }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
-           {isHovered ? (
-            // ホバー時に表示される「ログアウトボタン」
+          {isHovered ? (
             <button
-              onClick={() => signOut()} // ログアウト処理
+              onClick={() => signOut()}
               style={{
-                padding: "5px 10px",
+                padding: "5px 20px",
                 backgroundColor: "red",
                 color: "white",
                 border: "none",
@@ -35,41 +36,34 @@ const LoginModal = () => {
                 cursor: "pointer",
               }}
             >
-              ログアウト
+              LogOut
             </button>
           ) : (
-            // ホバーしていない時に表示される「ログイン中：」
-            <p style={{ 
-              color: "white",
-              cursor: "pointer",
-              padding: "5px 10px",
-              border: "none",
-              borderRadius: "4px",
-              backgroundColor: "black",
-              }}>
-              {/* ログイン中：{session.user?.name || "ゲスト"} */}
-              ログ中{session.user?.name || "ゲスト"}
+            <p
+              style={{
+                color: "white",
+                cursor: "pointer",
+                padding: "5px 10px",
+                border: "none",
+                borderRadius: "4px",
+                backgroundColor: "#0070f3",
+                whiteSpace: "nowrap",
+              }}
+            >
+              LogIn : {session.user?.name || "ゲスト"}
             </p>
           )}
         </div>
       ) : (
-        // 未ログインの場合のログインボタン
         <button
-          onClick={() => toggleModal()} // モーダルを開く
-          style={{
-            cursor: "pointer",
-            padding: "10px 20px",
-            backgroundColor: "#044592",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-          }}
+          className="bg-slate-800 text-white hover:bg-red-500 py-1 px-5 rounded-md transition-colors"
+          onClick={() => setIsOpen(true)}
         >
-          ログイン
+          LogIn
         </button>
       )}
 
-      {/* モーダル */}
+      {/* モーダル（共通） */}
       {isOpen && !session && (
         <div
           style={{
@@ -83,6 +77,7 @@ const LoginModal = () => {
             justifyContent: "center",
             alignItems: "center",
             zIndex: 9999,
+            margin:0,
           }}
         >
           <div
@@ -92,24 +87,43 @@ const LoginModal = () => {
               borderRadius: "8px",
               width: "400px",
               boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+              position: "relative",
             }}
           >
-            {/* ログインフォームを表示 */}
-            <SignInPageContent />
-            <button
-              onClick={toggleModal} // モーダルを閉じる処理
-              style={{
-                marginTop: "10px",
-                padding: "5px 10px",
-                backgroundColor: "gray",
-                color: "white",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-              }}
-            >
-              閉じる
-            </button>
+            {/* ログイン or 新規登録 */}
+            {showSignUp ? (
+              <>
+                {/* <h2 className="text-xl font-bold mb-4 text-center">新規登録</h2> */}
+                <SignUpModal onClose={closeModal} />
+                <p className="mt-4 text-sm text-center">
+                  すでにアカウントをお持ちですか？{" "}
+                  <button
+                    onClick={() => setShowSignUp(false)}
+                    className="text-blue-600 underline"
+                  >
+                    ログインへ
+                  </button>
+                </p>
+              </>
+            ) : (
+              <>
+                <SignInPageContent />
+                <div className="flex justify-end mt-4">
+                  <button
+                    onClick={closeModal}
+                    className="bg-gray-500 text-white px-4 py-2 rounded mr-2"
+                  >
+                    閉じる
+                  </button>
+                  <button
+                    onClick={() => setShowSignUp(true)}
+                    className="bg-blue-500 text-white px-4 py-2 rounded"
+                  >
+                    新規登録
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}

@@ -1,74 +1,70 @@
+//app/news/pages.tsx
+
 "use client";
+
+import { useSession } from "next-auth/react"; // NextAuth.js を使用している場合
 import heroData from "../../public/data/heroData.json";
 import Heros from "../components/Heros";
-import { useState, useEffect } from "react";
+import NewsList from "../components/NewsList";
+import { useEffect, useState } from "react";
+import { NewsItem } from "../components/NewsList";
 
-type NewsItem = {
-    id: number;
-    date: string;
-    title: string;
-    content: string;
-  };
-// Propsの型を定義
-type NewsProps = {
-  showAll?: boolean;
-  withWrapper?: boolean;
-  wrapperClass?: string;
-};
-
-const News = ({ showAll = true, withWrapper = true, wrapperClass = "" }: NewsProps) => {
-  // ニュースデータとAPIから取得
-  const [news, setNews] = useState<NewsItem[]>([]);
-  const [currentPage, setCurrentPage] = useState(1); // ページ管理
-  const itemsPerPage = 10; // 1ページあたりのアイテム数
+const NewsPage = () => {
+  const { data: session } = useSession(); // セッション情報を取得
+  const [newsItems, setNewsItems] = useState<NewsItem[]>([]); 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchNews = async () => {
-      const response = await fetch("/api/news");
-      const data = await response.json();
-      setNews(data);
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await fetch(`/api/news?page=${currentPage}`);
+        if (!response.ok) {
+          const message = `ニュースの取得に失敗しました: ${response.status}`;
+          setError(message);
+          throw new Error(message);
+        }
+        const data = await response.json();
+        const totalPagesHeader = response.headers.get("X-WP-TotalPages");
+        setNewsItems(data);
+        setTotalPages(totalPagesHeader ? parseInt(totalPagesHeader, 10) : 1);
+      } catch (err) {
+        console.error("ニュース取得エラー:", err);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchNews();
-  }, []);
+  }, [currentPage]);
 
-  // ページネーションのロジック
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const paginatedNews = news.slice(startIndex, endIndex); // 現在のページデータ
-  const totalPages = Math.ceil(news.length / itemsPerPage);
-
-  // ページネーションの処理
-  const handlePrev = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
   };
 
-  const handleNext = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
+  const renderPagination = () => {
+    const pages = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pages.push(
+        <button
+          key={i}
+          onClick={() => handlePageChange(i)}
+          className={`mx-1 px-3 py-1 rounded-md ${
+            currentPage === i ? "bg-gray-700 text-white" : "bg-gray-200 text-gray-700"
+          }`}
+        >
+          {i}
+        </button>
+      );
     }
+    return <div className="flex justify-center mt-8">{pages}</div>;
   };
 
-  // ニュースの内容
-  const NewsContent = (
-    <>
-      {paginatedNews.length > 0 ? (
-        paginatedNews.map((newsItem) => (
-          <div key={newsItem.id} className="flex border border-gray-500 rounded-lg gap-3 px-4 py-5 mb-4">
-            <p>{newsItem.date}</p>
-            <h2>{newsItem.title}</h2>
-          </div>
-        ))
-      ) : (
-        <p>現在、ニュースはありません。</p>
-      )}
-    </>
-  );
-
-  // レンダリング
-  return withWrapper ? (
+  return (
     <>
       <Heros
         id={heroData.news.id}
@@ -79,50 +75,36 @@ const News = ({ showAll = true, withWrapper = true, wrapperClass = "" }: NewsPro
         primaryButton={heroData.news.primaryButton}
         secondaryButton={heroData.news.secondaryButton}
       />
-      <section id="news" className={`w-full py-10 md:py-20 bg-gray-50 md:min-h-screen ${wrapperClass}`}>
+      <section id="news" className="w-full py-10 md:py-20 bg-gray-50 md:min-h-screen">
         <div className="container mx-auto px-4 my-10 md:my-20">
-          <div className="text-center mb-6 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-10">ニュース・トピック 一覧</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto leading-loose">
-              アイミットの最新ニュースから、おすすめ情報やお得な情報まで、今必要な情報をいち早くお届けします。
-            </p>
+          <div className="container mx-auto w-full md:w-2/3 mb-4">
+            {loading ? (
+              <p>Loading news...</p>
+            ) : error ? (
+              <p className="text-red-500">{error}</p>
+            ) : (
+              <NewsList
+                newsItems={newsItems}
+                showAll={true}
+                className="block"
+                itemClassName="flow p-2 bg-gray-100 bg-transparent mx-auto"
+                baceClassName="border border-gray-200 rounded-lg p-2 flex items-center gap-5"
+              />
+            )}
           </div>
-          <div className="container mx-auto w-2/3 mb-4 block justify-center">{NewsContent}</div>
-          {/* ページネーション */}
-          <div className="flex justify-center items-center gap-4 mt-6">
-            <button
-              onClick={handlePrev}
-              className={`px-4 py-2 bg-blue-500 text-white rounded ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""}`}
-              disabled={currentPage === 1}
-            >
-              前へ
+
+          {/* 管理者でない場合は編集ボタンを非表示にする */}
+          {/* {session?.user?.role === "admin" && (
+            <button className="bg-blue-500 text-white p-2 rounded">
+              編集
             </button>
-            <p className="text-lg">
-              ページ {currentPage} / {totalPages}
-            </p>
-            <button
-              onClick={handleNext}
-              className={`px-4 py-2 bg-blue-500 text-white rounded ${
-                currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""
-              }`}
-              disabled={currentPage === totalPages}
-            >
-              次へ
-            </button>
-          </div>
+          )} */}
+
+          {totalPages > 1 && renderPagination()}
         </div>
       </section>
-    </>
-  ) : (
-    <>
-      <div className="bg-slate-200 w-[100vw]">
-        <div className="container text-center pt-6 pb-3 mx-auto flex items-center justify-center">
-          <h1 className="text-3xl font-bold mr-5 mb-4">News</h1>
-          <div className="px-4 py-5 w-1/2 rounded-lg">{NewsContent}</div>
-        </div>
-      </div>
     </>
   );
 };
 
-export default News;
+export default NewsPage;
